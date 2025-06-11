@@ -9,6 +9,8 @@
   - [Data Structure](#-data-structure)
   - [External Libraries](#-external-libraries)
 
+  ---
+
 ## 📁 Project Structure
 
 ```plaintext

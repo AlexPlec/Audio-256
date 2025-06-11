@@ -10,6 +10,7 @@
 - [Technical Specifications](#-technical-specifications)
 - [User Experience Highlights](#-user-experience-highlights)
 - [More Documentation](#-more-documentation)
+- [License](#-license)
 
 
 ## 🚀 Key Features
@@ -51,6 +52,8 @@
 - [Technical Architecture](docs/architecture.md)
 - [Custom UserControls](docs/usercontrols.md)
 - [Contributing Guide](docs/contributing.md)
+
+---
 
 ## 📝 License
 
