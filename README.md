@@ -7,7 +7,7 @@
 ## 📚 Table of Contents
 
 - [Key Features](#-key-features)
-- [Technical Specifications](#-technical-specifications)
+- [Technical Specifications](#technical-specifications)
 - [User Experience Highlights](#-user-experience-highlights)
 - [More Documentation](#-more-documentation)
 - [License](#-license)
