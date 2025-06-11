@@ -9,14 +9,8 @@
 - [Key Features](#-key-features)
 - [Technical Specifications](#-technical-specifications)
 - [User Experience Highlights](#-user-experience-highlights)
-- [Project Structure](#-project-structure-example)
-- [Technical Architecture](#-technical-architecture)
-  - [Core Classes](#-core-classes)
-  - [Forms / Views](#-forms--views)
-  - [Custom UserControls](#-custom-usercontrols)
-  - [Component Interaction](#-component-interaction)
-  - [Data Structure](#-data-structure)
-  - [External Libraries](#-external-libraries)
+- [More Documentation](#-more-documentation)
+
 
 ## 🚀 Key Features
 
