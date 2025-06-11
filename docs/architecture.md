@@ -1,10 +1,10 @@
 ## 📚 Table of Contents
 
-- [Project Structure](#-project-structure-example)
+- [Project Structure](#-project-structure)
 - [Technical Architecture](#-technical-architecture)
   - [Core Classes](#-core-classes)
   - [Forms / Views](#-forms--views)
-  - [Custom UserControls](#-custom-usercontrols)
+  - [Custom UserControls](#️-custom-usercontrols)
   - [Component Interaction](#-component-interaction)
   - [Data Structure](#-data-structure)
   - [External Libraries](#-external-libraries)
