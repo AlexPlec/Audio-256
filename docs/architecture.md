@@ -9,7 +9,7 @@
   - [Data Structure](#-data-structure)
   - [External Libraries](#-external-libraries)
 
-  ---
+---
 
 ## 📁 Project Structure
 
@@ -41,6 +41,8 @@ Audio256/
 │
 └── AppInitializer.cs
 ```  
+
+---
 
 ## 🛠 Technical Architecture
 

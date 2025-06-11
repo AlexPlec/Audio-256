@@ -12,6 +12,7 @@
 - [More Documentation](#-more-documentation)
 - [License](#-license)
 
+---
 
 ## 🚀 Key Features
 
