@@ -7,10 +7,10 @@
 ## 📚 Table of Contents
 
 - 🚀 [Key Features](#-key-features)
-- [Technical Specifications](#️-technical-specifications)
-- [User Experience Highlights](#-user-experience-highlights)
-- [More Documentation](#-more-documentation)
-- [License](#-license)
+- ⚙️ [Technical Specifications](#️-technical-specifications)
+- 💡 [User Experience Highlights](#-user-experience-highlights)
+- 📖 [Technical Documentation](#-technical-documentation)
+- 📝 [License](#-license)
 
 ---
 
@@ -50,9 +50,9 @@
 
 ## 📖 Technical Documentation
 
-- [📐 Technical Architecture](docs/architecture.md)
-- [🧩 Custom UserControls](docs/usercontrols.md)
-- [🔄 Component Overview](docs/components.md)
+- 📐 [Technical Architecture](docs/architecture.md)
+- 🧩 [Custom UserControls](docs/usercontrols.md)
+- 🔄 [Component Overview](docs/components.md)
 
 ---
 
