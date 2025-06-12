@@ -13,14 +13,15 @@ Descriptions of reusable visual components that form the building blocks of Audi
 
 ## 🎛️ Controls Overview
 
-| Control | Description |
-|---------|-------------|
-| `ArtistAlbumElement` | Represents a single album thumbnail in an artist view |
-| `ArtistAlbumView` | Displays full album view with cover and tracklist |
-| `ArtistAlbumSongsView` | Album detail with track number, title, duration |
-| `PlaylistInfoElement` | Shows playlist title and cover in playlists view |
-| `PlaylistSongElement` | Displays a song entry with option to add/remove |
-| `PlaylistSearchElement` | Textbox for searching songs to add to playlists |
+| Control Name          | Description                               | Used In View(s)         | Notes / Features                       |
+|----------------------|-------------------------------------------|------------------------|--------------------------------------|
+| 🎵 `ArtistAlbumElement`  | Single album thumbnail in artist view     | ArtistAlbumView        | Clickable, hover effects              |
+| 📀 `ArtistAlbumView`     | Full album with cover and tracklist       | ArtistAlbumView        | Container for album details           |
+| 📃 `ArtistAlbumSongsView`| Track list with number, title, duration   | ArtistAlbumView        | Displays detailed track info          |
+| 📋 `PlaylistInfoElement` | Playlist title and cover art               | PlaylistView           | Editable title, cover support         |
+| 🎶 `PlaylistSongElement` | Song entry with add/remove button          | PlaylistView           | Supports drag and reorder             |
+| 🔍 `PlaylistSearchElement`| Search box to add songs to playlist       | PlaylistView           | Autocomplete, debounce input          |
+
 
 ---
 
@@ -38,3 +39,5 @@ Consider including:
 - Screenshots of each control
 - A style guide for colors, padding, and font sizes
 - UX behaviors like hover, click, and drag if implemented
+
+<  [`ArtistAlbumElement`](Views/Elements/Albums/ArtistAlbumThumbnail.cs) >
