@@ -6,12 +6,12 @@ This section outlines the internal structure of **Audio-256**, including project
 
 ## 📚 Table of Contents
 
-- [Project Structure](#-project-structure)
-- [Core Classes](#-core-classes)
-- [Forms / Views](#-forms--views)
-- [Data Structure](#-data-structure)
-- [External Libraries](#-external-libraries)
-- [Build & Run](#-build--run)
+- 📁 [Project Structure](#-project-structure)
+- 📦 [Core Classes](#-core-classes)
+- 🖼 [Forms / Views](#-forms--views)
+- 🗂 [Data Structure](#-data-structure)
+- 📦 [External Libraries](#-external-libraries)
+- 🛠 [Build & Run](#-build--run)
 
 ---
 
@@ -48,7 +48,7 @@ Audio256/
 
 ---
 
-### 📦 Core Classes
+## 📦 Core Classes
 
 | Class | Responsibility |
 |-------|----------------|
@@ -60,7 +60,7 @@ Audio256/
 
 ---
 
-### 🖼 Forms / Views
+## 🖼 Forms / Views
 
 | Form / View | Description |
 |-------------|-------------|
@@ -72,7 +72,7 @@ Audio256/
 
 ---
 
-### 🗂 Data Structure
+## 🗂 Data Structure
 
 - **MP3 files** organized in folders: `/Music/Artist/Album/*.mp3`
 - **Playlists & history** stored in: `/Data/Playlists/*.json`
@@ -80,7 +80,7 @@ Audio256/
 
 ---
 
-### 📦 External Libraries
+## 📦 External Libraries
 
 | Library | Purpose |
 |--------|---------|
