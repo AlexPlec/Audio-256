@@ -6,20 +6,55 @@ Descriptions of reusable visual components that form the building blocks of Audi
 
 ## 📚 Table of Contents
 
-- 🎛️ [Controls Overview](#️-controls-overview)
+- 🎛️ [Controls Overview](#️-ui-controls-overview)
 - 🖼 [Extension Notes](#-extension-notes)
 
 ---
-## 🎛️ Controls Overview
+# 🎛️ UI Controls Overview
 
-| Control Name          | Description                               | Used In View(s)         | Notes / Features                       |
-|----------------------|-------------------------------------------|------------------------|--------------------------------------|
-| 🎵 `ArtistAlbumElement`  | Single album thumbnail in artist view     | ArtistAlbumView        | Clickable, hover effects              |
-| 📀 `ArtistAlbumView`     | Full album with cover and tracklist       | ArtistAlbumView        | Container for album details           |
-| 📃 `ArtistAlbumSongsView`| Track list with number, title, duration   | ArtistAlbumView        | Displays detailed track info          |
-| 📋 `PlaylistInfoElement` | Playlist title and cover art               | PlaylistView           | Editable title, cover support         |
-| 🎶 `PlaylistSongElement` | Song entry with add/remove button          | PlaylistView           | Supports drag and reorder             |
-| 🔍 `PlaylistSearchElement`| Search box to add songs to playlist       | PlaylistView           | Autocomplete, debounce input          |
+A detailed reference of reusable `UserControl` components used across **Audio256** views. Organized by domain for easier maintainability and onboarding.
+
+---
+
+## 🎨 Artist-Related Controls (`ArtistAlbumView`)
+
+| Control                 | Description                                             | Used In            | Notes / Features                          |
+|-------------------------|---------------------------------------------------------|--------------------|-------------------------------------------|
+| `ArtistAlbumElement`    | Thumbnail for an album under an artist                 | `ArtistAlbumView`  | Clickable, hover highlight, shows title   |
+| `ArtistAlbumView`       | Container for an artist’s selected album(s)            | `MainForm`         | Shows selected artist’s albums in detail  |
+| `ArtistAlbumSongsView`  | Track list for an album: number, title, duration       | `ArtistAlbumView`  | Scrollable; synced with album selection   |
+
+---
+
+## 💿 Album-Related Controls (`AlbumsView`, `AlbumTracksView`)
+
+| Control                 | Description                                             | Used In               | Notes / Features                          |
+|-------------------------|---------------------------------------------------------|------------------------|-------------------------------------------|
+| `AlbumTrackItem`        | Track row with number, title, and duration             | `AlbumTracksView`      | Used only for album context               |
+| `TrackListItem`         | Generic track row showing title and artist             | `AlbumTracksView`, `PlaylistView` | Reusable for multiple contexts      |
+| `AlbumListItem`         | Album item with cover and title for grid display       | `AlbumsView`           | Responsive layout in grid                 |
+| `ArtistAlbumThumbnail`  | Album card in an artist view (compact + styled)        | `ArtistAlbumView`      | Visual variant of `AlbumListItem`         |
+
+---
+
+## 🎶 Playlist-Related Controls (`PlaylistView`)
+
+| Control                 | Description                                             | Used In            | Notes / Features                          |
+|-------------------------|---------------------------------------------------------|--------------------|-------------------------------------------|
+| `PlaylistInfoElement`   | Displays playlist title, cover art, and metadata       | `PlaylistView`     | Editable title, default fallback art      |
+| `PlaylistSongElement`   | Song row in a playlist with remove/add buttons         | `PlaylistView`     | Supports drag-and-drop reorder            |
+| `PlaylistSearchElement` | Search box to find and add songs to playlist           | `PlaylistView`     | Debounced input, autocomplete             |
+| `PlaylistHeader`        | Header area with playlist summary metadata             | `PlaylistView`     | Sticky header with play/shuffle buttons   |
+| `PlaylistTrackItem`     | Track info row with controls for managing playlist     | `PlaylistView`     | Icon buttons for remove and reorder       |
+| `PlaylistSearchBox`     | Alternative naming for `PlaylistSearchElement`         | `PlaylistView`     | Same control; consider aliasing clearly   |
+
+---
+
+## 👤 Artist & Album List Controls (`ArtistsView`, `AlbumsView`)
+
+| Control               | Description                                               | Used In         | Notes / Features                          |
+|-----------------------|-----------------------------------------------------------|------------------|-------------------------------------------|
+| `ArtistListItem`      | Artist entry with name and optional image                | `ArtistsView`    | Clickable to open artist detail view      |
 
 ---
 
