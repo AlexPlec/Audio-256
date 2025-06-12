@@ -4,6 +4,13 @@ Descriptions of reusable visual components that form the building blocks of Audi
 
 ---
 
+## 📚 Table of Contents
+
+- [Controls Overview](#️-controls-overview)
+- [Extension Notes](#-extension-notes)
+
+---
+
 ## 🎛️ Controls Overview
 
 | Control | Description |

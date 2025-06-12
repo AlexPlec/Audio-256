@@ -1,3 +1,20 @@
+# 🛠 Technical Architecture
+
+This section outlines the internal structure of **Audio-256**, including project structure, core components, views.
+
+---
+
+## 📚 Table of Contents
+
+- [Project Structure](#-project-structure)
+- [Core Classes](#-core-classes)
+- [Forms / Views](#-forms--views)
+- [Data Structure](#-data-structure)
+- [External Libraries](#-external-libraries)
+- [Build & Run](#-build--run)
+
+---
+
 ## 📁 Project Structure
 
 ```plaintext
@@ -28,12 +45,6 @@ Audio256/
 │
 └── AppInitializer.cs
 ```  
-
----
-
-## 🛠 Technical Architecture
-
-This section outlines the internal structure of **Audio-256**, including core components, views, and their interactions.
 
 ---
 

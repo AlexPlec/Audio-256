@@ -4,6 +4,13 @@ Describes how key components of the application interact and initialize.
 
 ---
 
+## 📚 Table of Contents
+
+- [Component Interaction Flow](#-component-interaction-flow)
+- [Initialization Sequence](#-initialization-sequence)
+
+---
+
 ## 🔄 Component Interaction Flow
 
 - `AppInitializer` → sets up `MusicLibrary` using `LibraryLoader`
