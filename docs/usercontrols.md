@@ -10,8 +10,7 @@ Descriptions of reusable visual components that form the building blocks of Audi
 - 🖼 [Extension Notes](#-extension-notes)
 
 ---
-<details>
-<summary>🎛️ Controls Overview</summary>
+## 🎛️ Controls Overview
 
 | Control Name          | Description                               | Used In View(s)         | Notes / Features                       |
 |----------------------|-------------------------------------------|------------------------|--------------------------------------|
@@ -22,7 +21,6 @@ Descriptions of reusable visual components that form the building blocks of Audi
 | 🎶 `PlaylistSongElement` | Song entry with add/remove button          | PlaylistView           | Supports drag and reorder             |
 | 🔍 `PlaylistSearchElement`| Search box to add songs to playlist       | PlaylistView           | Autocomplete, debounce input          |
 
-</details>
 ---
 
 ## 🖼 Extension Notes
