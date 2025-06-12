@@ -48,11 +48,11 @@
 
 ---
 
-## 📖 More Documentation
+## 📖 Technical Documentation
 
-- [Technical Architecture](docs/architecture.md)
-- [Custom UserControls](docs/usercontrols.md)
-- [Contributing Guide](docs/contributing.md)
+- [📐 Technical Architecture](docs/architecture.md)
+- [🧩 Custom UserControls](docs/usercontrols.md)
+- [🔄 Component Overview](docs/components.md)
 
 ---
 

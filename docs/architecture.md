@@ -1,16 +1,3 @@
-## 📚 Table of Contents
-
-- [Project Structure](#-project-structure)
-- [Technical Architecture](#-technical-architecture)
-  - [Core Classes](#-core-classes)
-  - [Forms / Views](#-forms--views)
-  - [Custom UserControls](#️-custom-usercontrols)
-  - [Component Interaction](#-component-interaction)
-  - [Data Structure](#-data-structure)
-  - [External Libraries](#-external-libraries)
-
----
-
 ## 📁 Project Structure
 
 ```plaintext
@@ -71,30 +58,6 @@ This section outlines the internal structure of **Audio-256**, including core co
 | `AlbumView` | Shows all albums and related metadata |
 | `SongView` | Lists all available songs |
 | `PlaylistView` | Displays user playlists and the current playing queue |
-
----
-
-### 🎛️ Custom UserControls
-
-| Control | Description |
-|---------|-------------|
-| `ArtistAlbumElement` | Represents a single album thumbnail in an artist view |
-| `ArtistAlbumView` | Displays full album view with cover and tracklist |
-| `ArtistAlbumSongsView` | Album detail with track number, title, duration |
-| `PlaylistInfoElement` | Shows playlist title and cover in playlists view |
-| `PlaylistSongElement` | Displays a song entry with option to add/remove |
-| `PlaylistSearchElement` | Textbox for searching songs to add to playlists |
-
----
-
-### 🔄 Component Interaction
-
-- `AppInitializer` → sets up `MusicLibrary` using `LibraryLoader`
-- `LibraryLoader` → loads and parses song metadata using `TagLibSharp`
-- `MusicLibrary` → provides data to `ArtistView`, `AlbumView`, `SongView`
-- `UserControls` → display data dynamically from the library (e.g. `ArtistAlbumElement` created in loop from `MusicLibrary`)
-- `Player` → called from `PlaylistView` and `SongView` to manage playback
-- On app start, last played playlist is restored from JSON via `LibraryLoader`
 
 ---
 
