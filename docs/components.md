@@ -13,6 +13,15 @@ Describes how key components of the application interact and initialize.
 
 ## 🔄 Component Interaction Flow
 
+graph TD
+    AppInitializer --> LibraryLoader
+    LibraryLoader --> MusicLibrary
+    MusicLibrary -->|Provides data to| Views
+    Views -->|Create| UserControls
+    Views -->|Trigger actions| Player
+    UserControls --> Player
+    AppInitializer -->|Restore session| Player
+
 ## 🔁 1. `AppInitializer`
 
 - Entry point of the application.
