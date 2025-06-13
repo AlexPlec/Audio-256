@@ -21,42 +21,42 @@ This section outlines the internal structure of **Audio-256**, including project
 Audio256/
 │
 ├── Forms/
-│   └── MainForm.cs                      // Main window for navigation, event handling, and layout control.
+│   └── MainForm.cs                      // Main window UI and layout control
 │
-├── Views/                               // UI views and composite containers for major sections.
-│   ├── ArtistsView.cs                    // Displays all artists in the music library.
-│   ├── AlbumsView.cs                     // Displays all albums across all artists.
-│   ├── ArtistAlbumView.cs                // Shows selected artist’s albums in detail.
-│   ├── AlbumTracksView.cs                // Displays track list and metadata for a selected album.
-│   ├── PlaylistView.cs                   // View for user-created playlists and current playback queue.
+├── Views/                               // Main view containers and user-facing sections
+│   ├── ArtistsView.cs
+│   ├── AlbumsView.cs
+│   ├── ArtistAlbumView.cs
+│   ├── AlbumTracksView.cs
+│   ├── PlaylistView.cs
 │   │
-│   └── Elements/                        // Reusable UI components (UserControls), grouped by view usage.
-│       ├── Artists/                      // Components used in ArtistsView.
-│       │   └── ArtistListItem.cs         // Represents a single artist with name and image.
+│   └── Elements/                        // Reusable UI components grouped by domain
+│       ├── Artists/
+│       │   └── ArtistListItem.cs
 │       │
-│       ├── Albums/                      // Components used in AlbumsView and ArtistAlbumView.
-│       │   ├── AlbumListItem.cs          // Grid item with album cover and title.
-│       │   └── ArtistAlbumThumbnail.cs   // Album card displayed inside an artist view.
+│       ├── Albums/
+│       │   ├── AlbumListItem.cs
+│       │   └── ArtistAlbumThumbnail.cs
 │       │
-│       ├── Tracks/                      // Components used in AlbumTracksView.
-│       │   ├── TrackListItem.cs           // Generic track row showing title and artist.
-│       │   └── AlbumTrackItem.cs         // Album-specific track item showing number and duration.
+│       ├── Tracks/
+│       │   ├── TrackListItem.cs
+│       │   └── AlbumTrackItem.cs
 │       │
-│       └── Playlists/                   // Components used in PlaylistView.
-│           ├── PlaylistHeader.cs         // Displays playlist title, cover art, and metadata.
-│           ├── PlaylistTrackItem.cs       // Track item in playlist with remove and reorder controls.
-│           └── PlaylistSearchBox.cs      // Search box to find and add tracks to playlist.
+│       └── Playlists/
+│           ├── PlaylistHeader.cs
+│           ├── PlaylistTrackItem.cs
+│           └── PlaylistSearchBox.cs
 │
-├── Core/                                // Application logic, state management, and backend services.
-│   ├── Player.cs                         // Manages audio playback (play, pause, stop, loop, volume).
-│   ├── MusicLibrary.cs                   // In-memory structure of all tracks, albums, and artists.
-│   ├── MetadataHelper.cs                 // Extracts metadata (title, album, duration) using TagLibSharp.
-│   └── LibraryLoader.cs                  // Loads music files and playlists from disk into memory.
+├── Core/                                // Logic and backend services
+│   ├── Player.cs
+│   ├── MusicLibrary.cs
+│   ├── MetadataHelper.cs
+│   └── LibraryLoader.cs
 │
-├── Resources/                           // Static assets (covers, icons, config files, sample data).
-│   └── (Icons, Album Covers, JSON data, etc.)
+├── Resources/                           // Static assets and data
+│   └── (icons, covers, JSON, etc.)
 │
-└── AppInitializer.cs                    // Application entry setup; loads library and initializes views.
+└── AppInitializer.cs                    // Startup logic and dependency injection
 ```  
 
 ---
