@@ -43,12 +43,16 @@ Audio256/
 │       │   ├── TrackListItem.cs
 │       │   └── AlbumTrackItem.cs
 │       │
-│       └── Playlists/
-│           ├── PlaylistItem.cs
-│           ├── PlaylistHeader.cs
-│           ├── PlaylistTrackItem.cs
-│           └── PlaylistSearchBox.cs
-│
+│       ├── Playlists/
+│       │    ├── PlaylistItem.cs
+│       │    ├── PlaylistHeader.cs
+│       │    ├── PlaylistTrackItem.cs
+│       │    └── PlaylistSearchBox.cs
+│       │
+│       └── GlobalUI/                    // Shared components
+│           ├── NavBar.cs               
+│           ├── PlayerControlBar.cs     
+│           └── SystemTrayIcon.cs 
 ├── Core/                                // Logic and backend services
 │   ├── Player.cs
 │   ├── MusicLibrary.cs
@@ -85,6 +89,7 @@ Audio256/
 | `ArtistAlbumView` | Shows detailed view of a selected artist’s albums, including thumbnails and metadata |
 | `AlbumTracksView` | Displays track list and detailed metadata for a selected album |
 | `PlaylistView` | Shows user-created playlists and the current playback queue with controls |
+| `PlaylistTracksView` | Displays the track list and controls for a selected user-created playlist|
 
 ---
 
