@@ -12,15 +12,16 @@ Describes how key components of the application interact and initialize.
 ---
 
 ## 🔄 Component Interaction Flow
-
+```mermaid
 graph TD
-    AppInitializer --> LibraryLoader
-    LibraryLoader --> MusicLibrary
-    MusicLibrary -->|Provides data to| Views
-    Views -->|Create| UserControls
-    Views -->|Trigger actions| Player
-    UserControls --> Player
-    AppInitializer -->|Restore session| Player
+    AppInitializer["🧭 AppInitializer"] -->|Initializes| LibraryLoader["📂 LibraryLoader"]
+    LibraryLoader -->|Populates| MusicLibrary["🧠 MusicLibrary"]
+    MusicLibrary -->|Provides Data To| Views["🖼️ Views"]
+    Views -->|Render| UserControls["🧩 UserControls"]
+    Views -->|Trigger Events| Player["🎵 Player"]
+    UserControls -->|Send Actions| Player
+    AppInitializer -->|Restore Session| Player
+```
 
 ## 🔁 1. `AppInitializer`
 
