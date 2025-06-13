@@ -105,18 +105,12 @@ Path: `Views/Elements/<Domain>/`
 ## 🧬 Initialization Sequence
 
 ```mermaid
-sequenceDiagram
-    participant App as AppInitializer
-    participant Loader as LibraryLoader
-    participant Library as MusicLibrary
-    participant Views as UI Views<br/>(ArtistsView, AlbumsView, PlaylistView)
-    participant Controls as UserControls
-    participant Player as Player
-
-    App->>Loader: Scan /Music and /Data folders
-    Loader->>Library: Extract metadata using TagLibSharp
-    Loader->>Library: Populate Artists, Albums, Tracks, Playlists
-    App->>Views: Initialize views with Library data
-    Views->>Controls: Create ArtistListItem, AlbumListItem, etc.
-    Controls->>Player: Play/Pause/Seek on user interaction
-    App->>Player: Restore last played state from JSON
+graph TD
+    AppInitializer["🧭 AppInitializer"] -->|Scan /Music & /Data folders| LibraryLoader["📂 LibraryLoader"]
+    LibraryLoader -->|Extract metadata using TagLibSharp| MusicLibrary["🧠 MusicLibrary"]
+    LibraryLoader -->|Populate Artists, Albums, Tracks, Playlists| MusicLibrary
+    AppInitializer -->|Initialize views with Library data| Views["🖼️ UI Views (ArtistsView, AlbumsView, PlaylistView)"]
+    Views -->|Create UserControls (ArtistListItem, AlbumListItem, etc.)| UserControls["🧩 UserControls"]
+    UserControls -->|Play/Pause/Seek on user interaction| Player["🎵 Player"]
+    AppInitializer -->|Restore last played state from JSON| Player
+```
