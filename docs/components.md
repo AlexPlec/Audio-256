@@ -110,7 +110,7 @@ graph TD
     LibraryLoader -->|Extract metadata with TagLibSharp| MusicLibrary["🧠 MusicLibrary"]
     LibraryLoader -->|Populate Artists Albums Tracks Playlists| MusicLibrary
     AppInitializer -->|Initialize views with Library data| Views["🖼️ UI Views"]
-    Views -->|Create UserControls like ArtistListItem AlbumListItem| UserControls["🧩 UserControls"]
+    Views -->|Create UserControls like ArtistListItem AlbumListItem PlaylistItem| UserControls["🧩 UserControls"]
     UserControls -->|Play Pause Seek on interaction| Player["🎵 Player"]
     AppInitializer -->|Restore last played state from JSON| Player
 

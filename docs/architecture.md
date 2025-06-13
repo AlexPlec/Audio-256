@@ -29,6 +29,7 @@ Audio256/
 │   ├── ArtistAlbumView.cs
 │   ├── AlbumTracksView.cs
 │   ├── PlaylistView.cs
+│   ├── PlaylistTracksView.cs
 │   │
 │   └── Elements/                        // Reusable UI components grouped by domain
 │       ├── Artists/
@@ -43,6 +44,7 @@ Audio256/
 │       │   └── AlbumTrackItem.cs
 │       │
 │       └── Playlists/
+│           ├── PlaylistItem.cs
 │           ├── PlaylistHeader.cs
 │           ├── PlaylistTrackItem.cs
 │           └── PlaylistSearchBox.cs

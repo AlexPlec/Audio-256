@@ -54,9 +54,10 @@ Reusable `UserControl` components used across **Audio256**, grouped by domain an
 
 | Control               | Description                                           | Used In View(s)   | Features / Notes                              |
 |-----------------------|-------------------------------------------------------|--------------------|-----------------------------------------------|
-| `PlaylistHeader`      | Header block with title, metadata, and play controls | `PlaylistView`     | Sticky top; includes shuffle/play actions     |
-| `PlaylistTrackItem`   | Track row with metadata and reorder/delete buttons   | `PlaylistView`     | Drag-and-drop supported; editable             |
-| `PlaylistSearchBox`   | Search box to locate and add tracks                  | `PlaylistView`     | Autocomplete; debounced for performance       |
+| `PlaylistHeader`      | Header block with title, metadata, and play controls | `PlaylistTracksView`     | Sticky top; includes shuffle/play actions     |
+| `PlaylistTrackItem`   | Track row with metadata and reorder/delete buttons   | `PlaylistTracksView`     | Drag-and-drop supported; editable             |
+| `PlaylistSearchBox`   | Search box to locate and add tracks                  | `PlaylistTracksView`     | Autocomplete; debounced for performance       |
+| `PlaylistItem`        | Clickable preview of a playlist (title, cover, count)| `PlaylistView`           | Selects and opens a playlist                  |
 
 ---
 
