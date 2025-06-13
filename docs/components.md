@@ -107,10 +107,11 @@ Path: `Views/Elements/<Domain>/`
 ```mermaid
 graph TD
     AppInitializer["🧭 AppInitializer"] -->|Scan /Music & /Data folders| LibraryLoader["📂 LibraryLoader"]
-    LibraryLoader -->|Extract metadata using TagLibSharp| MusicLibrary["🧠 MusicLibrary"]
-    LibraryLoader -->|Populate Artists, Albums, Tracks, Playlists| MusicLibrary
-    AppInitializer -->|Initialize views with Library data| Views["🖼️ UI Views (ArtistsView, AlbumsView, PlaylistView)"]
-    Views -->|Create UserControls (ArtistListItem, AlbumListItem, etc.)| UserControls["🧩 UserControls"]
-    UserControls -->|Play/Pause/Seek on user interaction| Player["🎵 Player"]
+    LibraryLoader -->|Extract metadata with TagLibSharp| MusicLibrary["🧠 MusicLibrary"]
+    LibraryLoader -->|Populate Artists Albums Tracks Playlists| MusicLibrary
+    AppInitializer -->|Initialize views with Library data| Views["🖼️ UI Views"]
+    Views -->|Create UserControls like ArtistListItem AlbumListItem| UserControls["🧩 UserControls"]
+    UserControls -->|Play Pause Seek on interaction| Player["🎵 Player"]
     AppInitializer -->|Restore last played state from JSON| Player
+
 ```
