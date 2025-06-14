@@ -16,6 +16,18 @@ Reusable `UserControl` components used across **Audio256**, grouped by domain an
 
 ---
 
+## 🔧 Global UI Controls
+
+📂 `Forms/Elements/`
+
+| Control             | Description                                         | Used In View(s)    | Features / Notes                         |
+|---------------------|-----------------------------------------------------|---------------------|-------------------------------------------|
+| `NavBar`            | Top horizontal navigation (Artists, Albums, Playlists) | `MainForm`            | Hosts navigation buttons, highlights active view |
+| `PlayerControlBar`  | Bottom docked control with playback, track info, and volume | `MainForm`       | 	Shows current track, play/pause, next, volume slider, etc. |
+| `SystemTrayIcon`    | Tray integration for background play with context menu | `MainForm (App-wide)` | Adds minimize-to-tray, right-click menu with playback options |
+
+---
+
 ## 🧑‍🎤 Artist-Related Controls
 
 📂 `Views/Elements/Artists/`

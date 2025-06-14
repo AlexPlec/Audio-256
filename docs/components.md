@@ -21,6 +21,12 @@ graph TD
     Views -->|Trigger Events| Player["🎵 Player"]
     UserControls -->|Send Actions| Player
     AppInitializer -->|Restore Session| Player
+    MainForm["🖥️ MainForm"] --> NavBar["🧭 NavBar"]
+    MainForm --> PlayerControlBar["🎛️ PlayerControlBar"]
+    MainForm --> SystemTrayIcon["📌 SystemTrayIcon"]
+    NavBar -->|Switch View| Views
+    PlayerControlBar -->|Control Playback| Player
+    SystemTrayIcon -->|Tray Commands| Player
 ```
 
 ## 🔁 1. `AppInitializer`
@@ -91,6 +97,15 @@ Path: `Views/Elements/<Domain>/`
   - Playback queue
 - Triggered by `PlaylistView`, `AlbumTracksView`, and `UserControls`.
 
+## 🖥️ 7. `Embedded Controls`
+
+
+| **Control**        | **Description**                                                                            | **Interacts With** | **Role & Behavior**                                                             |
+| ------------------ | ------------------------------------------------------------------------------------------ | ------------------ | ------------------------------------------------------------------------------- |
+| `NavBar`           | Top navigation bar with buttons to switch between views (Artists, Albums, Playlists, etc.) | `Views`            | Handles view transitions by invoking appropriate view loading logic.            |
+| `PlayerControlBar` | Bottom playback control panel showing track info, play/pause, seek, volume                 | `Player`, `Views`  | Central control for playback; reflects and controls current track state.        |
+| `SystemTrayIcon`   | Adds application to system tray with right-click menu and restore/minimize                 | `Player`, OS Tray  | Enables background playback, minimize-to-tray functionality, and tray commands. |
+
 ---
 
 ## 📌 Notes
@@ -113,5 +128,8 @@ graph TD
     Views -->|Create UserControls like ArtistListItem AlbumListItem PlaylistItem| UserControls["🧩 UserControls"]
     UserControls -->|Play Pause Seek on interaction| Player["🎵 Player"]
     AppInitializer -->|Restore last played state from JSON| Player
-
+    AppInitializer -->|Attach system components| MainForm["🖥️ MainForm"]
+    MainForm --> NavBar
+    MainForm --> PlayerControlBar
+    MainForm --> SystemTrayIcon
 ```

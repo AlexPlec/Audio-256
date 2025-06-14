@@ -20,10 +20,14 @@ This section outlines the internal structure of **Audio-256**, including project
 ```plaintext
 Audio256/
 │
-├── Forms/
-│   └── MainForm.cs                      // Main window UI and layout control
+├── Forms/                                // Main window and persistent UI elements
+│   ├── MainForm.cs                       
+│   └── Elements/                         // UI components embedded in MainForm
+│       ├── NavBar.cs                     
+│       ├── PlayerControlBar.cs           
+│       └── SystemTrayIcon.cs             
 │
-├── Views/                               // Main view containers and user-facing sections
+├── Views/                                // Top-level views shown in MainForm
 │   ├── ArtistsView.cs
 │   ├── AlbumsView.cs
 │   ├── ArtistAlbumView.cs
@@ -31,38 +35,35 @@ Audio256/
 │   ├── PlaylistView.cs
 │   ├── PlaylistTracksView.cs
 │   │
-│   └── Elements/                        // Reusable UI components grouped by domain
+│   └── Elements/                         // Domain-specific reusable UI components
 │       ├── Artists/
-│       │   └── ArtistListItem.cs
+│       │   └── ArtistListItem.cs         
 │       │
 │       ├── Albums/
-│       │   ├── AlbumListItem.cs
-│       │   └── ArtistAlbumThumbnail.cs
+│       │   ├── AlbumListItem.cs          
+│       │   └── ArtistAlbumThumbnail.cs   
 │       │
 │       ├── Tracks/
-│       │   ├── TrackListItem.cs
-│       │   └── AlbumTrackItem.cs
+│       │   ├── TrackListItem.cs          
+│       │   └── AlbumTrackItem.cs         
 │       │
-│       ├── Playlists/
-│       │    ├── PlaylistItem.cs
-│       │    ├── PlaylistHeader.cs
-│       │    ├── PlaylistTrackItem.cs
-│       │    └── PlaylistSearchBox.cs
-│       │
-│       └── GlobalUI/                    // Shared components
-│           ├── NavBar.cs               
-│           ├── PlayerControlBar.cs     
-│           └── SystemTrayIcon.cs 
-├── Core/                                // Logic and backend services
-│   ├── Player.cs
-│   ├── MusicLibrary.cs
-│   ├── MetadataHelper.cs
-│   └── LibraryLoader.cs
+│       └── Playlists/
+│           ├── PlaylistItem.cs           
+│           ├── PlaylistHeader.cs         
+│           ├── PlaylistTrackItem.cs      
+│           └── PlaylistSearchBox.cs      
 │
-├── Resources/                           // Static assets and data
+├── Core/                                 // Application logic and backend services
+│   ├── Player.cs                         
+│   ├── MusicLibrary.cs                   
+│   ├── MetadataHelper.cs                 
+│   └── LibraryLoader.cs                  
+│
+├── Resources/                            // Static content and data assets
 │   └── (icons, covers, JSON, etc.)
 │
-└── AppInitializer.cs                    // Startup logic and dependency injection
+└── AppInitializer.cs                     // Startup sequence and dependency injection
+
 ```  
 
 ---
