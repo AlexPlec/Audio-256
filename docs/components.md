@@ -99,6 +99,7 @@ Path: `Views/Elements/<Domain>/`
 
 ## 🖥️ 7. `Embedded Controls`
 
+These are persistent UI components embedded within MainForm that handle global application behavior and act as bridges between the user interface and the core logic.
 
 | **Control**        | **Description**                                                                            | **Interacts With** | **Role & Behavior**                                                             |
 | ------------------ | ------------------------------------------------------------------------------------------ | ------------------ | ------------------------------------------------------------------------------- |
