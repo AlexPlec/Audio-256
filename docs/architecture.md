@@ -20,50 +20,106 @@ This section outlines the internal structure of **Audio-256**, including project
 ```plaintext
 Audio256/
 │
-├── Forms/                                // Main window and persistent UI elements
-│   ├── MainForm.cs                       
-│   └── Elements/                         // UI components embedded in MainForm
-│       ├── NavBar.cs                     
-│       ├── PlayerControlBar.cs           
-│       └── SystemTrayIcon.cs             
+├── App/                                   // 🎯 App-level config and bootstrap
+│   ├── AppInitializer.cs
+│   ├── Program.cs
+│   └── Resources/                         // Static content (icons, covers, etc.)
+│       └── ...
 │
-├── Views/                                // Top-level views shown in MainForm
-│   ├── ArtistsView.cs
-│   ├── AlbumsView.cs
-│   ├── ArtistAlbumView.cs
-│   ├── AlbumTracksView.cs
-│   ├── PlaylistView.cs
-│   ├── PlaylistTracksView.cs
-│   │
-│   └── Elements/                         // Domain-specific reusable UI components
-│       ├── Artists/
-│       │   └── ArtistListItem.cs         
-│       │
-│       ├── Albums/
-│       │   ├── AlbumListItem.cs          
-│       │   └── ArtistAlbumThumbnail.cs   
-│       │
-│       ├── Tracks/
-│       │   ├── TrackListItem.cs          
-│       │   └── AlbumTrackItem.cs         
-│       │
-│       └── Playlists/
-│           ├── PlaylistItem.cs           
-│           ├── PlaylistHeader.cs         
-│           ├── PlaylistTrackItem.cs      
-│           └── PlaylistSearchBox.cs      
+├── Core/                                  // ⚙️ Reusable application-wide logic
+│   ├── Player.cs
+│   ├── MusicLibrary.cs
+│   ├── MetadataHelper.cs
+│   └── LibraryLoader.cs
 │
-├── Core/                                 // Application logic and backend services
-│   ├── Player.cs                         
-│   ├── MusicLibrary.cs                   
-│   ├── MetadataHelper.cs                 
-│   └── LibraryLoader.cs                  
-│
-├── Resources/                            // Static content and data assets
-│   └── (icons, covers, JSON, etc.)
-│
-└── AppInitializer.cs                     // Startup sequence and dependency injection
-
+└── UI/                                    // 🎨 User interface grouped by feature
+    │
+    ├── MainForm/
+    │   ├── Models/
+    │   │   └── MainFormModel.cs
+    │   ├── Views/
+    │   │   └── MainFormView.cs
+    │   └── Controllers/
+    │       └── MainFormController.cs
+    │
+    ├── Shared/                            // UI Elements shared across modules
+    │   ├── NavBar/
+    │   │   ├── NavBarModel.cs
+    │   │   ├── NavBarView.cs
+    │   │   └── NavBarController.cs
+    │   ├── PlayerControlBar/
+    │   │   ├── PlayerControlBarModel.cs
+    │   │   ├── PlayerControlBarView.cs
+    │   │   └── PlayerControlBarController.cs
+    │   └── SystemTrayIcon/
+    │       ├── SystemTrayIconModel.cs
+    │       ├── SystemTrayIconView.cs
+    │       └── SystemTrayIconController.cs
+    │ 
+    ├── Artists/
+    │   ├── Models/
+    │   │   ├── ArtistsViewModel.cs
+    │   │   └── ArtistListItemModel.cs
+    │   ├── Views/
+    │   │   ├── ArtistsView.cs
+    │   │   └── ArtistListItemView.cs
+    │   └── Controllers/
+    │       ├── ArtistsViewController.cs
+    │       └── ArtistListItemController.cs
+    │ 
+    ├── Albums/
+    │   ├── Models/
+    │   │   ├── AlbumsViewModel.cs
+    │   │   ├── AlbumListItemModel.cs
+    │   │   └── ArtistAlbumThumbnailModel.cs
+    │   ├── Views/
+    │   │   ├── AlbumsView.cs
+    │   │   ├── AlbumListItemView.cs
+    │   │   └── ArtistAlbumThumbnailView.cs
+    │   └── Controllers/
+    │       ├── AlbumsViewController.cs
+    │       ├── AlbumListItemController.cs
+    │       └── ArtistAlbumThumbnailController.cs
+    │ 
+    ├── AlbumDetails/
+    │   ├── Models/
+    │   │   ├── ArtistAlbumViewModel.cs
+    │   │   ├── AlbumTracksViewModel.cs
+    │   │   ├── TrackListItemModel.cs
+    │   │   └── AlbumTrackItemModel.cs
+    │   ├── Views/
+    │   │   ├── ArtistAlbumView.cs
+    │   │   ├── AlbumTracksView.cs
+    │   │   ├── TrackListItemView.cs
+    │   │   └── AlbumTrackItemView.cs
+    │   └── Controllers/
+    │       ├── ArtistAlbumViewController.cs
+    │       ├── AlbumTracksViewController.cs
+    │       ├── TrackListItemController.cs
+    │       └── AlbumTrackItemController.cs
+    │ 
+    └── Playlists/
+        ├── Models/
+        │   ├── PlaylistViewModel.cs
+        │   ├── PlaylistTracksViewModel.cs
+        │   ├── PlaylistItemModel.cs
+        │   ├── PlaylistTrackItemModel.cs
+        │   ├── PlaylistHeaderModel.cs
+        │   └── PlaylistSearchBoxModel.cs
+        ├── Views/
+        │   ├── PlaylistView.cs
+        │   ├── PlaylistTracksView.cs
+        │   ├── PlaylistItemView.cs
+        │   ├── PlaylistTrackItemView.cs
+        │   ├── PlaylistHeaderView.cs
+        │   └── PlaylistSearchBoxView.cs
+        └── Controllers/
+            ├── PlaylistViewController.cs
+            ├── PlaylistTracksViewController.cs
+            ├── PlaylistItemController.cs
+            ├── PlaylistTrackItemController.cs
+            ├── PlaylistHeaderController.cs
+            └── PlaylistSearchBoxController.cs
 ```  
 
 ---
