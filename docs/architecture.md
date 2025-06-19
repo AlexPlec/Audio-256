@@ -42,83 +42,133 @@ Audio256/
     │   └── Controllers/
     │       └── MainFormController.cs
     │
-    ├── Shared/                            // UI Elements shared across modules
+    ├── Shared/                            // 🔁 Shared visual/UI modules
     │   ├── NavBar/
-    │   │   ├── NavBarModel.cs
-    │   │   ├── NavBarView.cs
-    │   │   └── NavBarController.cs
+    │   │   ├── Models/
+    │   │   │   └── NavBarModel.cs
+    │   │   ├── Views/
+    │   │   │   └── NavBarView.cs
+    │   │   └── Controllers/
+    │   │       └── NavBarController.cs
+    │   │
     │   ├── PlayerControlBar/
-    │   │   ├── PlayerControlBarModel.cs
-    │   │   ├── PlayerControlBarView.cs
-    │   │   └── PlayerControlBarController.cs
+    │   │   ├── PlayerHeader/
+    │   │   │   ├── Models/
+    │   │   │   │   └── PlayerHeaderModel.cs
+    │   │   │   ├── Views/
+    │   │   │   │   └── PlayerHeaderView.cs
+    │   │   │   └── Controllers/
+    │   │   │        └── PlayerHeaderController.cs
+    │   │   │  
+    │   │   ├── PlayerBar/
+    │   │   │   ├── Models/
+    │   │   │   │   └── PlayerBarModel.cs
+    │   │   │   ├── Views/
+    │   │   │   │   └── PlayerBarView.cs
+    │   │   │   └── Controllers/
+    │   │   │        └── PlayerBarController.cs
+    │   │   │
+    │   │   └── SoundBar/
+    │   │       ├── Models/
+    │   │       │   └── SoundBarModel.cs
+    │   │       ├── Views/
+    │   │       │   └── SoundBarView.cs
+    │   │       └── Controllers/
+    │   │           └── SoundBarController.cs
+    │   │
     │   └── SystemTrayIcon/
-    │       ├── SystemTrayIconModel.cs
-    │       ├── SystemTrayIconView.cs
-    │       └── SystemTrayIconController.cs
-    │ 
+    │       ├── Models/
+    │       │   └── SystemTrayIconModel.cs
+    │       ├── Views/
+    │       │   └── SystemTrayIconView.cs
+    │       └── Controllers/
+    │           └── SystemTrayIconController.cs
+    │
     ├── Artists/
     │   ├── Models/
     │   │   ├── ArtistsViewModel.cs
-    │   │   └── ArtistListItemModel.cs
+    │   │   └── ArtistListThumbnailModel.cs
     │   ├── Views/
     │   │   ├── ArtistsView.cs
-    │   │   └── ArtistListItemView.cs
+    │   │   └── ArtistListThumbnailView.cs
     │   └── Controllers/
     │       ├── ArtistsViewController.cs
-    │       └── ArtistListItemController.cs
-    │ 
+    │       └── ArtistListThumbnailController.cs
+    │
     ├── Albums/
     │   ├── Models/
     │   │   ├── AlbumsViewModel.cs
-    │   │   ├── AlbumListItemModel.cs
-    │   │   └── ArtistAlbumThumbnailModel.cs
+    │   │   └── AlbumListThumbnailModel.cs
     │   ├── Views/
     │   │   ├── AlbumsView.cs
-    │   │   ├── AlbumListItemView.cs
-    │   │   └── ArtistAlbumThumbnailView.cs
+    │   │   └── AlbumListThumbnailView.cs
     │   └── Controllers/
     │       ├── AlbumsViewController.cs
-    │       ├── AlbumListItemController.cs
-    │       └── ArtistAlbumThumbnailController.cs
-    │ 
-    ├── AlbumDetails/
+    │       └── AlbumListThumbnailController.cs
+    │
+    ├── ArtistAlbums/
     │   ├── Models/
-    │   │   ├── ArtistAlbumViewModel.cs
+    │   │   ├── ArtistAlbumsViewModel.cs
+    │   │   └── ArtistAlbumThumbnailModel.cs
+    │   ├── Views/
+    │   │   ├── ArtistAlbumsView.cs
+    │   │   └── ArtistAlbumThumbnailView.cs
+    │   └── Controllers/
+    │       ├── ArtistAlbumsViewController.cs
+    │       └── ArtistAlbumThumbnailController.cs
+    │   
+    ├── AlbumTracks/
+    │   ├── Models/
     │   │   ├── AlbumTracksViewModel.cs
-    │   │   ├── TrackListItemModel.cs
+    │   │   ├── AlbumTracksHeaderModel.cs
+    │   │   ├── AlbumTracksListModel.cs
     │   │   └── AlbumTrackItemModel.cs
     │   ├── Views/
-    │   │   ├── ArtistAlbumView.cs
     │   │   ├── AlbumTracksView.cs
-    │   │   ├── TrackListItemView.cs
-    │   │   └── AlbumTrackItemView.cs
+    │   │   ├── AlbumTracksHeaderView.cs
+    │   │   ├── AlbumTracksListView.cs
+    │   │   └── AlbumTrackView.cs
     │   └── Controllers/
-    │       ├── ArtistAlbumViewController.cs
     │       ├── AlbumTracksViewController.cs
-    │       ├── TrackListItemController.cs
-    │       └── AlbumTrackItemController.cs
-    │ 
-    └── Playlists/
+    │       ├── AlbumTracksHeaderController.cs
+    │       ├── AlbumTracksListController.cs
+    │       └── AlbumTrackController.cs
+    │
+    ├── Playlist/
+    │   ├── Models/
+    │   │   ├── PlaylistViewModel.cs
+    │   │   ├── PlaylistCreateButtonModel.cs
+    │   │   └── PlaylistThumbnailModel.cs
+    │   ├── Views/
+    │   │   ├── PlaylistView.cs
+    │   │   ├── PlaylistCreateButtonView.cs
+    │   │   └── PlaylistThumbnailView.cs
+    │   └── Controllers/
+    │       ├── PlaylistViewController.cs
+    │       ├── PlaylistCreateButtonController.cs
+    │       └── PlaylistThumbnailController.cs
+    │
+    └── PlaylistTracks/
         ├── Models/
-        │   ├── PlaylistViewModel.cs
         │   ├── PlaylistTracksViewModel.cs
-        │   ├── PlaylistItemModel.cs
         │   ├── PlaylistTrackItemModel.cs
         │   ├── PlaylistHeaderModel.cs
+        │   ├── PlaylistListModel.cs
+        │   ├── PlaylistSearchTrackItemModel.cs
         │   └── PlaylistSearchBoxModel.cs
         ├── Views/
-        │   ├── PlaylistView.cs
         │   ├── PlaylistTracksView.cs
-        │   ├── PlaylistItemView.cs
         │   ├── PlaylistTrackItemView.cs
         │   ├── PlaylistHeaderView.cs
+        │   ├── PlaylistListView.cs
+        │   ├── PlaylistSearchTrackItemView.cs
         │   └── PlaylistSearchBoxView.cs
         └── Controllers/
-            ├── PlaylistViewController.cs
             ├── PlaylistTracksViewController.cs
-            ├── PlaylistItemController.cs
             ├── PlaylistTrackItemController.cs
             ├── PlaylistHeaderController.cs
+            ├── PlaylistListController.cs
+            ├── PlaylistSearchTrackItemController.cs
             └── PlaylistSearchBoxController.cs
 ```  
 

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36203.30 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Audio-256", "Audio-256.csproj", "{93CB8F9B-165B-415E-9EE8-1984B83E999F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Audio-256", "Audio-256.csproj", "{AAA0F45E-90DE-48FE-88CB-F85815CF15DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{93CB8F9B-165B-415E-9EE8-1984B83E999F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{93CB8F9B-165B-415E-9EE8-1984B83E999F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{93CB8F9B-165B-415E-9EE8-1984B83E999F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{93CB8F9B-165B-415E-9EE8-1984B83E999F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAA0F45E-90DE-48FE-88CB-F85815CF15DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAA0F45E-90DE-48FE-88CB-F85815CF15DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAA0F45E-90DE-48FE-88CB-F85815CF15DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAA0F45E-90DE-48FE-88CB-F85815CF15DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {6EAFE091-E698-41DD-A849-8C35A67A6FE0}
+		SolutionGuid = {7855FB1A-A9FD-4361-9190-7E97EA25D313}
 	EndGlobalSection
 EndGlobal
