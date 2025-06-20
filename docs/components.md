@@ -7,6 +7,15 @@ Describes how key components of the application interact and initialize.
 ## 📚 Table of Contents
 
 - 🔄 [Component Interaction Flow](#-component-interaction-flow)
+  - 🧭 [AppInitializer](#-1-appinitializer)
+  - 📂 [LibraryLoader](#-2-libraryloader)
+  - 🧠 [MusicLibrary](#-3-musiclibrary)
+  - 🖼️ [Views](#️-4-views)
+  - 🧩 [UserControls](#-5-usercontrols)
+  - 🎵 [Player](#-6-player)
+  - 📡 [MediatorPattern](#-7-mediatorpattern)
+  - 🖥️ [Embedded Controls](#️-8-embedded-controls)
+- 📌 [Design Notes](#-design-notes)
 - 🧬 [Initialization Sequence](#-initialization-sequence)
 
 ---
@@ -19,30 +28,32 @@ graph TD
     LibraryLoader -->|Builds| MusicLibrary["🧠 MusicLibrary"]
     MusicLibrary -->|Provides Data To| Views["🖼️ Views"]
     Views -->|Render Layouts With| UserControls["🧩 UserControls"]
-    Views -->|Trigger Events| Player["🎵 Player"]
-    UserControls -->|Send Commands| Player
+    Views -->|Send Events| Mediator["📡 MediatorPattern"]
+    UserControls -->|Raise Events| Mediator
+    Mediator -->|Dispatches To| Player["🎵 Player"]
+    Mediator -->|Broadcasts To| Views
     AppInitializer -->|Restore Session| Player
     MainForm["🖥️ MainForm"] --> NavBar["🧭 NavBar"]
     MainForm --> PlayerControlBar["🎛️ PlayerControlBar"]
     MainForm --> SystemTrayIcon["📌 SystemTrayIcon"]
     NavBar -->|Switch View| Views
-    PlayerControlBar -->|Control Playback| Player
-    SystemTrayIcon -->|Tray Commands| Player
+    PlayerControlBar -->|Control Playback| Mediator
+    SystemTrayIcon -->|Tray Commands| Mediator
 ```
 
-## 🧭 1. `AppInitializer`
+### 🧭 1. `AppInitializer`
 
 - Application entry point.
 - Bootstraps:
   - `LibraryLoader` for scanning audio and metadata
   - `MusicLibrary` with structured data
-  - `Player` with previous playback state
+  - `MediatorPattern ` for centralized event dispatch
 - Constructs main UI views with dependencies injected.
 - Attaches persistent UI components (`NavBar`, `PlayerControlBar`, `TrayIcon`).
 
 ---
 
-## 📂 2. `LibraryLoader`
+### 📂 2. `LibraryLoader`
 
 - Scans:
   - `/Music/Artist/Album/*.mp3` for audio files
@@ -55,7 +66,7 @@ graph TD
 
 ---
 
-## 🧠 3. `MusicLibrary`
+### 🧠 3. `MusicLibrary`
 
 - Central in-memory store of all structured music data.
 - Responsibilities:
@@ -65,7 +76,7 @@ graph TD
 
 ---
 
-## 🖼️ 4. Views
+### 🖼️ 4. Views
 
 Located in: UI/<Domain>/Views/
 
@@ -77,7 +88,7 @@ Located in: UI/<Domain>/Views/
 
 ---
 
-## 🧩 5. `UserControls`
+### 🧩 5. `UserControls`
 
  Located in: UI/<Domain>/Views/Elements/
 
@@ -88,11 +99,11 @@ Located in: UI/<Domain>/Views/
   - Controller manages user input and logic
 - Examples include:
   - `ArtistListThumbnailView`, `AlbumTrackView`, `PlaylistTrackItemView`, etc.
-- Raise events or call controller methods to invoke Player actions or update state.
+- Report interaction (e.g., click, drag, search) by raising events to MediatorPattern.
 
 ---
 
-## 🎵 6. `Player`
+### 🎵 6. `Player`
 
 Located in: Core/Player.cs
 
@@ -105,7 +116,24 @@ Located in: Core/Player.cs
   - View Controllers (e.g., `AlbumTracksViewController`, `PlaylistViewController`)
   - Event emitters from UserControls
 
-## 🖥️ 7. `Embedded Controls`
+  ---
+
+### 📡 7. MediatorPattern
+
+Located in Core/MediatorPattern.cs
+
+- Central event dispatcher for application-wide communication.
+- Promotes loose coupling between:
+  - Views
+  - UserControls
+  - Player
+- Components subscribe to or publish messages such as:
+  - `TrackSelected`, `PlayRequested`, `VolumeChanged`, `ViewChanged`
+- Helps views trigger actions (like playback) without directly referencing each other.
+
+---
+
+### 🖥️ 8. `Embedded Controls`
 
 Persistent UI elements embedded in MainFormView, acting as global interfaces to core functionality.
 
@@ -119,10 +147,22 @@ Persistent UI elements embedded in MainFormView, acting as global interfaces to 
 
 ## 📌 Design Notes
 
-- Loose Coupling: Views and controls depend on `MusicLibrary` for data and Player for playback—no direct cross-dependencies.
-- Modularity: Views use UserControls exclusively for internal UI structure, supporting high reusability.
-- State Restoration: `AppInitializer` restores last session state (e.g., queue, track position) to ensure user continuity.
-- Encapsulation: Each UserControl manages its own state and behavior independently via MVC triplets.
+### 🔗 Decoupled Architecture
+- Loose Coupling: Views, controls, and services interact indirectly via MediatorPattern or shared data (MusicLibrary), avoiding direct dependencies.
+- Event-Driven Communication: User interactions and logic responses are mediated through MediatorPattern, enabling clean separation between UI and core functionality.
+
+### 🧱 Modularity & Reusability
+- Encapsulated UI Components: Each UserControl follows MVC separation (Model, View, Controller) and handles its own internal logic.
+- Reusable Visual Elements: Controls are domain-agnostic and can be reused across multiple views (e.g., playlist and album views).
+- Views as Composers: High-level views build their layout using modular UserControls, keeping UI logic organized and reusable.
+
+### 🧠 Centralized Data Flow
+- Single Source of Truth: MusicLibrary manages all structured music data and serves as the authoritative state store across the application.
+- Consistent Access: All queries and lookups for music data (artists, albums, tracks, playlists) go through MusicLibrary, ensuring predictability.
+
+### ♻️ State Management & Continuity
+- Session Restoration: AppInitializer restores the last-used state (e.g., playback position, active view, selected track) at startup.
+- Playback Persistence: Player maintains its current queue and track progress, supporting seamless resume across sessions.
 
 ---
 
@@ -134,11 +174,15 @@ graph TD
     LibraryLoader -->|Extract Metadata| MusicLibrary["🧠 MusicLibrary"]
     LibraryLoader -->|Build Domain Models| MusicLibrary
     AppInitializer -->|Create Views Using MusicLibrary| Views["🖼️ UI Views"]
+    AppInitializer -->|Initialize Event Bus| Mediator["📡 MediatorPattern"]
     Views -->|Instantiate UI Components| UserControls["🧩 UserControls"]
-    UserControls -->|Trigger Playback Events| Player["🎵 Player"]
-    AppInitializer -->|Restore Last Played State| Player
-    AppInitializer -->|Attach UI Infrastructure| MainForm["🖥️ MainForm"]
+    UserControls -->|Raise Events| Mediator
+    Views -->|Raise Events| Mediator
+    Mediator -->|Dispatch to| Player["🎵 Player"]
+    AppInitializer -->|Restore Playback State| Player
+    AppInitializer -->|Mount UI Shell| MainForm["🖥️ MainForm"]
     MainForm --> NavBar
     MainForm --> PlayerControlBar
     MainForm --> SystemTrayIcon
+
 ```

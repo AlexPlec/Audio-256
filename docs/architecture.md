@@ -7,7 +7,11 @@ This section outlines the internal structure of **Audio-256**, including project
 ## 📚 Table of Contents
 
 - 🧩 [MVC Architecture Pattern](#-mvc-architecture-pattern)
+    - ✳️ [Overview](#️-overview)
+    - 🧱 [Example Breakdown](#-example-breakdown)
+    - 🔁 [Interaction Flow](#-interaction-flow)
 - 📁 [Project Structure](#-project-structure)
+- 🛠 [App Classes](#-app-classes)
 - 📦 [Core Classes](#-core-classes)
 - 🖼 [Forms / Views](#-forms--views)
 - 🗂 [Data Structure](#-data-structure)
@@ -20,7 +24,7 @@ This section outlines the internal structure of **Audio-256**, including project
 
 **Audio-256** follows a Modular MVC (Model-View-Controller) architecture in the UI / layer to maintain clear separation of concerns, modularity, and scalability.
 
-## ✳️ Overview
+### ✳️ Overview
 | Layer              | Role                                                                                                                                               |
 | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Model (M)**      | Stores data and state for each UI module. Represents current UI-specific state (e.g., selected track, album list, volume level).                   |
@@ -28,7 +32,7 @@ This section outlines the internal structure of **Audio-256**, including project
 | **Controller (C)** | Acts as the glue. Handles business logic, user input, coordination between View and Model, and invokes services (e.g., `Player`, `LibraryLoader`). |
 
 
-## 🧱 Example Breakdown
+### 🧱 Example Breakdown
 Take the AlbumTracks module as an example:
 
 | File                           | Responsibility                                                                           |
@@ -38,7 +42,7 @@ Take the AlbumTracks module as an example:
 | `AlbumTracksViewController.cs` | Loads data via `MusicLibrary`, updates model, and reacts to user interaction in the view |
 
 
-## 🔁 Interaction Flow
+### 🔁 Interaction Flow
 
 ```mermaid
 graph TD
@@ -70,7 +74,8 @@ Audio256/
 │   ├── Player.cs
 │   ├── MusicLibrary.cs
 │   ├── MetadataHelper.cs
-│   └── LibraryLoader.cs
+│   ├── LibraryLoader.cs
+│   └── MediatorPattern.cs   
 │
 └── UI/                                    
     │
@@ -214,14 +219,24 @@ Audio256/
 
 ---
 
+## 🛠 App Classes
+| Class            | Responsibility                                                                                                                                                 |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AppInitializer` | Serves as the application entry point, coordinating startup logic such as loading data, initializing views, restoring session state, and wiring core services. |
+| `Program`        | Contains the main method launching the application, setting up the environment, and running the main form.                                                     |
+| `Resources`      | Holds static resources like images, icons, strings, and other assets used throughout the application UI.                                                       |
+
+---
+
 ## 📦 Core Classes
 
-| Class | Responsibility |
-|-------|----------------|
-| `Player` | Manages playback (play, pause, stop, volume, loop), built on NAudio |
-| `MusicLibrary` | Stores and manages the collection of tracks, artists, and albums |
-| `LibraryLoader` | Loads music data and playlists from disk (JSON, folders) |
-| `MetadataHelper` | Extracts metadata (title, artist, album, length) from MP3 files using TagLibSharp |
+| Class             | Responsibility                                                                                           |
+| ----------------- | -------------------------------------------------------------------------------------------------------- |
+| `Player`          | Manages audio playback (play, pause, stop, seek, volume, loop) using NAudio.                             |
+| `MusicLibrary`    | Stores and manages the entire collection of artists, albums, tracks, and playlists in memory.            |
+| `LibraryLoader`   | Scans local folders and loads music data and playlists from disk (e.g., JSON files, MP3 directories).    |
+| `MetadataHelper`  | Extracts detailed metadata (title, artist, album, length, cover art) from audio files using TagLibSharp. |
+| `MediatorPattern` | Implements a centralized event/message broker for decoupled communication between components and views.  |
 
 ---
 

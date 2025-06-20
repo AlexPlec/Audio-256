@@ -7,6 +7,11 @@ Descriptions of reusable visual components that form the building blocks of Audi
 ## 📚 Table of Contents
 
 - 🎛️ [Controls Overview](#️-controls-overview)
+    - 🔧 [Global UI Controls](#-global-ui-controls)
+    - 🧑‍🎤 [Artist UI Components](#-artist-ui-components)
+    - 💿 [Album UI Components](#-album-ui-components)
+    - 🎵 [Track UI Components](#-track-ui-components)
+    - 🎶 [Playlist UI Components](#-playlist-ui-components)
 - 🧱 [Control Structure](#-control-structure)
 - 🖼 [Integration Guidelines](#-integration-guidelines)
 
@@ -17,7 +22,7 @@ Reusable UserControl-based components used across **Audio-256**, grouped by doma
 
 ---
 
-## 🔧 Global UI Controls
+### 🔧 Global UI Controls
 
 📂 `UI/Shared/`
 
@@ -29,7 +34,7 @@ Reusable UserControl-based components used across **Audio-256**, grouped by doma
 
 ---
 
-## 🧑‍🎤 Artist UI Components
+### 🧑‍🎤 Artist UI Components
 
 📂 `UI/Artists/`
 
@@ -39,7 +44,7 @@ Reusable UserControl-based components used across **Audio-256**, grouped by doma
 
 ---
 
-## 💿 Album UI Components
+### 💿 Album UI Components
 
 📂 `UI/Albums/, UI/ArtistAlbums/`
 
@@ -50,7 +55,7 @@ Reusable UserControl-based components used across **Audio-256**, grouped by doma
 
 ---
 
-## 🎵 Track UI Components
+### 🎵 Track UI Components
 
 📂 `UI/AlbumTracks/, UI/PlaylistTracks/`
 
@@ -62,7 +67,7 @@ Reusable UserControl-based components used across **Audio-256**, grouped by doma
 
 ---
 
-## 🎶 Playlist UI Components
+### 🎶 Playlist UI Components
 
 📂 `UI/Playlist/, UI/PlaylistTracks/`
 
