@@ -6,6 +6,7 @@ This section outlines the internal structure of **Audio-256**, including project
 
 ## 📚 Table of Contents
 
+- 🧩 [MVC Architecture Pattern](#-mvc-architecture-pattern)
 - 📁 [Project Structure](#-project-structure)
 - 📦 [Core Classes](#-core-classes)
 - 🖼 [Forms / Views](#-forms--views)
