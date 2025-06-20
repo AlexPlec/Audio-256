@@ -41,10 +41,10 @@ Take the AlbumTracks module as an example:
 
 ```mermaid
 graph TD
-    A[User Interaction] --> B[View]
-    B --> C[Controller]
-    C --> D[Model (Update)]
-    D --> B[View (Reacts via Binding)]
+  A["User Interaction"] --> B["View"]
+  B --> C["Controller"]
+  C --> D["Model (Update)"]
+  D --> B
 ```
 
 1. The View captures UI events (e.g. "Play", "Select Album").
