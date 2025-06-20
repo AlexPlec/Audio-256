@@ -8,7 +8,7 @@ This section outlines the internal structure of **Audio-256**, including project
 
 - 🧩 [MVC Architecture Pattern](#-mvc-architecture-pattern)
     - ✳️ [Overview](#️-overview)
-    - 🧱 [Example Breakdown](#-example-breakdown)
+    - 🧱 [Example Breakdown (AlbumTracks module)](#-example-breakdown)
     - 🔁 [Interaction Flow](#-interaction-flow)
 - 📁 [Project Structure](#-project-structure)
 - 🛠 [App Classes](#-app-classes)
@@ -22,25 +22,27 @@ This section outlines the internal structure of **Audio-256**, including project
 
 ## 🧩 MVC Architecture Pattern
 
-**Audio-256** follows a Modular MVC (Model-View-Controller) architecture in the UI / layer to maintain clear separation of concerns, modularity, and scalability.
+**Audio-256** adopts a Modular MVC (Model–View–Controller) pattern enhanced with a Mediator Pattern, promoting clear separation of concerns, high modularity, and scalable communication between decoupled components.
 
 ### ✳️ Overview
-| Layer              | Role                                                                                                                                               |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Model (M)**      | Stores data and state for each UI module. Represents current UI-specific state (e.g., selected track, album list, volume level).                   |
-| **View (V)**       | Defines the UI layout and presentation logic. Binds to the model and responds to UI events (e.g., button clicks, selections).                      |
-| **Controller (C)** | Acts as the glue. Handles business logic, user input, coordination between View and Model, and invokes services (e.g., `Player`, `LibraryLoader`). |
+| Layer              | Role                                                                                                                                              |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Model (M)**      | Stores UI-specific data and state (e.g., current album, track list, volume level).                                                                |
+| **View (V)**       | Defines the visual layout and behavior. Reacts to UI events and binds to the model for data updates.                                              |
+| **Controller (C)** | Handles business logic, user interaction, and coordination between Model and View. Communicates with services through `MediatorPattern`.          |
+| **Mediator**       | Decouples Views, Controllers, and Services by acting as an event/message dispatcher across the app. Enables scalable, event-driven communication. |
 
+---
 
-### 🧱 Example Breakdown
-Take the AlbumTracks module as an example:
+### 🧱 Example Breakdown (AlbumTracks module)
 
-| File                           | Responsibility                                                                           |
-| ------------------------------ | ---------------------------------------------------------------------------------------- |
-| `AlbumTracksViewModel.cs`      | Stores current album, track list, and selection state                                    |
-| `AlbumTracksView.cs`           | Displays album info (cover, metadata) and list of tracks                                 |
-| `AlbumTracksViewController.cs` | Loads data via `MusicLibrary`, updates model, and reacts to user interaction in the view |
+| File                           | Responsibility                                                                               |
+| ------------------------------ | -------------------------------------------------------------------------------------------- |
+| `AlbumTracksViewModel.cs`      | Holds selected album, track list, playback selection, and UI state                           |
+| `AlbumTracksView.cs`           | Displays album info and renders list of tracks; triggers interaction events                  |
+| `AlbumTracksViewController.cs` | Loads album data from `MusicLibrary`, updates model, responds to user input via the Mediator |
 
+---
 
 ### 🔁 Interaction Flow
 
@@ -49,13 +51,17 @@ graph TD
   A["User Interaction"] --> B["View"]
   B --> C["Controller"]
   C --> D["Model (Update)"]
+  C --> E["Mediator (Event Dispatch)"]
+  E --> F["Services (e.g. Player, MusicLibrary)"]
   D --> B
 ```
 
-1. The View captures UI events (e.g. "Play", "Select Album").
-2. The Controller responds to those events by updating the Model or invoking core services.
-3. The Model is updated.
-4. The View reacts automatically to reflect the new state.
+---
+
+1. The View captures a UI event (e.g. user clicks "Play").
+2. The Controller handles the input, updates the Model, and sends an event via the Mediator.
+3. The Mediator dispatches the event to the appropriate service (Player, MusicLibrary, etc.).
+4. The Model changes, triggering the View to update its display accordingly.
 
 ---
 

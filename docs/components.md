@@ -41,6 +41,8 @@ graph TD
     SystemTrayIcon -->|Tray Commands| Mediator
 ```
 
+---
+
 ### 🧭 1. `AppInitializer`
 
 - Application entry point.
@@ -148,21 +150,27 @@ Persistent UI elements embedded in MainFormView, acting as global interfaces to 
 ## 📌 Design Notes
 
 ### 🔗 Decoupled Architecture
-- Loose Coupling: Views, controls, and services interact indirectly via MediatorPattern or shared data (MusicLibrary), avoiding direct dependencies.
-- Event-Driven Communication: User interactions and logic responses are mediated through MediatorPattern, enabling clean separation between UI and core functionality.
+- Loose Coupling: Views, controls, and services interact indirectly via `MediatorPattern` or shared data (`MusicLibrary`), avoiding direct dependencies.
+- Event-Driven Communication: User interactions and logic responses are mediated through `MediatorPattern`, enabling clean separation between UI and core functionality.
+
+---
 
 ### 🧱 Modularity & Reusability
 - Encapsulated UI Components: Each UserControl follows MVC separation (Model, View, Controller) and handles its own internal logic.
 - Reusable Visual Elements: Controls are domain-agnostic and can be reused across multiple views (e.g., playlist and album views).
 - Views as Composers: High-level views build their layout using modular UserControls, keeping UI logic organized and reusable.
 
+---
+
 ### 🧠 Centralized Data Flow
-- Single Source of Truth: MusicLibrary manages all structured music data and serves as the authoritative state store across the application.
-- Consistent Access: All queries and lookups for music data (artists, albums, tracks, playlists) go through MusicLibrary, ensuring predictability.
+- Single Source of Truth: `MusicLibrary` manages all structured music data and serves as the authoritative state store across the application.
+- Consistent Access: All queries and lookups for music data (artists, albums, tracks, playlists) go through `MusicLibrary`, ensuring predictability.
+
+---
 
 ### ♻️ State Management & Continuity
-- Session Restoration: AppInitializer restores the last-used state (e.g., playback position, active view, selected track) at startup.
-- Playback Persistence: Player maintains its current queue and track progress, supporting seamless resume across sessions.
+- Session Restoration: `AppInitializer` restores the last-used state (e.g., playback position, active view, selected track) at startup.
+- Playback Persistence: `Player` maintains its current queue and track progress, supporting seamless resume across sessions.
 
 ---
 
@@ -184,5 +192,4 @@ graph TD
     MainForm --> NavBar
     MainForm --> PlayerControlBar
     MainForm --> SystemTrayIcon
-
 ```
