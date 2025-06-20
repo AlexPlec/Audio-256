@@ -78,19 +78,21 @@ Reusable UserControl-based components used across **Audio-256**, grouped by doma
 ## 🧱 Control Structure
 
 Each UserControl is implemented using the MVC pattern and resides in:
-
+```plaintext
 UI/<Domain>/<ComponentName>/
 ├── Models/        // Holds component-specific state
 ├── Views/         // Renders the component
 └── Controllers/   // Handles user input and updates
+```
 
 For example:
 
+```plaintext
 UI/AlbumTracks/AlbumTrack/
 ├── Models/AlbumTrackItemModel.cs
 ├── Views/AlbumTrackView.cs
 └── Controllers/AlbumTrackController.cs
-
+```
 ---
 
 ## 🖼 Integration Guidelines
