@@ -47,11 +47,11 @@ graph TD
 - Scans:
   - `/Music/Artist/Album/*.mp3` for audio files
   - `/Data/Playlists/*.json` for user playlists
--Uses `TagLibSharp` to extract metadata:
-  -Title, album, artist, cover, duration
--Constructs structured domain models:
-  -`Artist`, `Album`, `Track`, `Playlist`
--Injects results into MusicLibrary.
+- Uses `TagLibSharp` to extract metadata:
+  - Title, album, artist, cover, duration
+- Constructs structured domain models:
+  - `Artist`, `Album`, `Track`, `Playlist`
+- Injects results into MusicLibrary.
 
 ---
 
