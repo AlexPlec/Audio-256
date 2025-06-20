@@ -15,24 +15,62 @@ This section outlines the internal structure of **Audio-256**, including project
 
 ---
 
+## 🧩 MVC Architecture Pattern
+
+**Audio-256** follows a Modular MVC (Model-View-Controller) architecture in the UI / layer to maintain clear separation of concerns, modularity, and scalability.
+
+## ✳️ Overview
+| Layer              | Role                                                                                                                                               |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Model (M)**      | Stores data and state for each UI module. Represents current UI-specific state (e.g., selected track, album list, volume level).                   |
+| **View (V)**       | Defines the UI layout and presentation logic. Binds to the model and responds to UI events (e.g., button clicks, selections).                      |
+| **Controller (C)** | Acts as the glue. Handles business logic, user input, coordination between View and Model, and invokes services (e.g., `Player`, `LibraryLoader`). |
+
+
+## 🧱 Example Breakdown
+Take the AlbumTracks module as an example:
+
+| File                           | Responsibility                                                                           |
+| ------------------------------ | ---------------------------------------------------------------------------------------- |
+| `AlbumTracksViewModel.cs`      | Stores current album, track list, and selection state                                    |
+| `AlbumTracksView.cs`           | Displays album info (cover, metadata) and list of tracks                                 |
+| `AlbumTracksViewController.cs` | Loads data via `MusicLibrary`, updates model, and reacts to user interaction in the view |
+
+
+## 🔁 Interaction Flow
+
+[User Interaction] → View → Controller → Model (Update)
+                                         ↓
+                              View (Reacts via Binding)
+
+1 The View captures UI events (e.g. "Play", "Select Album").
+
+2 The Controller responds to those events by updating the Model or invoking core services.
+
+3 The Model is updated.
+
+4 The View reacts automatically to reflect the new state.
+
+---
+
 ## 📁 Project Structure
 
 ```plaintext
 Audio256/
 │
-├── App/                                   // 🎯 App-level config and bootstrap
+├── App/                                   
 │   ├── AppInitializer.cs
 │   ├── Program.cs
-│   └── Resources/                         // Static content (icons, covers, etc.)
+│   └── Resources/                         
 │       └── ...
 │
-├── Core/                                  // ⚙️ Reusable application-wide logic
+├── Core/                                  
 │   ├── Player.cs
 │   ├── MusicLibrary.cs
 │   ├── MetadataHelper.cs
 │   └── LibraryLoader.cs
 │
-└── UI/                                    // 🎨 User interface grouped by feature
+└── UI/                                    
     │
     ├── MainForm/
     │   ├── Models/
@@ -42,7 +80,7 @@ Audio256/
     │   └── Controllers/
     │       └── MainFormController.cs
     │
-    ├── Shared/                            // 🔁 Shared visual/UI modules
+    ├── Shared/                            
     │   ├── NavBar/
     │   │   ├── Models/
     │   │   │   └── NavBarModel.cs
@@ -182,7 +220,6 @@ Audio256/
 | `MusicLibrary` | Stores and manages the collection of tracks, artists, and albums |
 | `LibraryLoader` | Loads music data and playlists from disk (JSON, folders) |
 | `MetadataHelper` | Extracts metadata (title, artist, album, length) from MP3 files using TagLibSharp |
-| `AppInitializer` | Initializes application components, views, and state at startup |
 
 ---
 
@@ -191,12 +228,12 @@ Audio256/
 | Form / View | Description |
 |-------------|-------------|
 | `MainForm` | Main application window responsible for navigation, event handling, and layout control |
-| `ArtistView` | Displays all artists in the music library, providing overview and navigation to artist details |
-| `AlbumView` | Displays all albums across all artists, with album cover and title |
-| `ArtistAlbumView` | Shows detailed view of a selected artist’s albums, including thumbnails and metadata |
-| `AlbumTracksView` | Displays track list and detailed metadata for a selected album |
-| `PlaylistView` | Shows user-created playlists and the current playback queue with controls |
-| `PlaylistTracksView` | Displays the track list and controls for a selected user-created playlist|
+| `Artists` | Displays all artists in the music library, providing overview and navigation to artist details |
+| `Albums` | Displays all albums across all artists, with album cover and title |
+| `ArtistAlbums` | Shows detailed view of a selected artist’s albums, including thumbnails and metadata |
+| `AlbumTracks` | Displays track list and detailed metadata for a selected album |
+| `Playlist` | Shows user-created playlists and the current playback queue with controls |
+| `PlaylistTracks` | Displays the track list and controls for a selected user-created playlist|
 
 ---
 
