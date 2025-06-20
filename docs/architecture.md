@@ -44,7 +44,7 @@ graph TD
     A[User Interaction] --> B[View]
     B --> C[Controller]
     C --> D[Model (Update)]
-    D --> B
+    D --> B[View (Reacts via Binding)]
 ```
 
 1. The View captures UI events (e.g. "Play", "Select Album").
