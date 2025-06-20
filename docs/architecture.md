@@ -39,17 +39,21 @@ Take the AlbumTracks module as an example:
 
 ## 🔁 Interaction Flow
 
-[User Interaction] → View → Controller → Model (Update)
-                                         ↓
-                              View (Reacts via Binding)
+```mermaid
+graph TD
+    A[User Interaction] --> B[View]
+    B --> C[Controller]
+    C --> D[Model (Update)]
+    D --> B
+```
 
-1 The View captures UI events (e.g. "Play", "Select Album").
+1. The View captures UI events (e.g. "Play", "Select Album").
 
-2 The Controller responds to those events by updating the Model or invoking core services.
+2. The Controller responds to those events by updating the Model or invoking core services.
 
-3 The Model is updated.
+3. The Model is updated.
 
-4 The View reacts automatically to reflect the new state.
+4. The View reacts automatically to reflect the new state.
 
 ---
 
