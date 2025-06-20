@@ -12,14 +12,15 @@ Describes how key components of the application interact and initialize.
 ---
 
 ## 🔄 Component Interaction Flow
+
 ```mermaid
 graph TD
     AppInitializer["🧭 AppInitializer"] -->|Initializes| LibraryLoader["📂 LibraryLoader"]
-    LibraryLoader -->|Populates| MusicLibrary["🧠 MusicLibrary"]
+    LibraryLoader -->|Builds| MusicLibrary["🧠 MusicLibrary"]
     MusicLibrary -->|Provides Data To| Views["🖼️ Views"]
-    Views -->|Render| UserControls["🧩 UserControls"]
+    Views -->|Render Layouts With| UserControls["🧩 UserControls"]
     Views -->|Trigger Events| Player["🎵 Player"]
-    UserControls -->|Send Actions| Player
+    UserControls -->|Send Commands| Player
     AppInitializer -->|Restore Session| Player
     MainForm["🖥️ MainForm"] --> NavBar["🧭 NavBar"]
     MainForm --> PlayerControlBar["🎛️ PlayerControlBar"]
@@ -29,92 +30,99 @@ graph TD
     SystemTrayIcon -->|Tray Commands| Player
 ```
 
-## 🔁 1. `AppInitializer`
+## 🧭 1. `AppInitializer`
 
-- Entry point of the application.
-- Triggers `LibraryLoader` to scan local music and data files.
-- Loads previous session state (e.g., last playlist or track).
-- Constructs primary views using `MusicLibrary` data.
+- Application entry point.
+- Bootstraps:
+  - `LibraryLoader` for scanning audio and metadata
+  - `MusicLibrary` with structured data
+  - `Player` with previous playback state
+- Constructs main UI views with dependencies injected.
+- Attaches persistent UI components (`NavBar`, `PlayerControlBar`, `TrayIcon`).
 
 ---
 
 ## 📂 2. `LibraryLoader`
 
-- Scans local directories (`/Music`, `/Data`) for audio and playlist files.
-- Uses `TagLibSharp` to extract:
-  - Track title, album, artist
-  - Duration and cover image
-- Parses and builds:
-  - `Artist`, `Album`, `Track`, `Playlist` objects
-- Feeds structured data into `MusicLibrary`.
+- Scans:
+  - `/Music/Artist/Album/*.mp3` for audio files
+  - `/Data/Playlists/*.json` for user playlists
+-Uses `TagLibSharp` to extract metadata:
+  -Title, album, artist, cover, duration
+-Constructs structured domain models:
+  -`Artist`, `Album`, `Track`, `Playlist`
+-Injects results into MusicLibrary.
 
 ---
 
 ## 🧠 3. `MusicLibrary`
 
-- Central in-memory data store for:
-  - Artists and Albums
-  - Tracks and Playlists
-- Offers queryable APIs for views to access relevant data.
-- Ensures a consistent, centralized source of truth across the app.
+- Central in-memory store of all structured music data.
+- Responsibilities:
+  - Querying for artists, albums, tracks, and playlists
+  - Providing filtered datasets to views
+- Used across all view controllers for consistent state access.
 
 ---
 
 ## 🖼️ 4. Views
 
-Includes: `ArtistsView`, `AlbumsView`, `ArtistAlbumView`, `AlbumTracksView`, `PlaylistView`
+Located in: UI/<Domain>/Views/
 
-- Pull data from `MusicLibrary` to display UI.
-- Dynamically instantiate `UserControls`, such as:
-  - `ArtistListItem`, `AlbumListItem`, `TrackListItem`, etc.
-- Bind user events:
-  - Selection
-  - Playback
-  - Playlist modification
+- High-level feature containers:
+  - `ArtistsView`, `AlbumsView`, `AlbumTracksView`, `PlaylistView`, etc.
+- Pull domain-specific data from MusicLibrary.
+- Instantiate and arrange UserControls.
+- Bind user input to logic via their corresponding controllers.
 
 ---
 
 ## 🧩 5. `UserControls`
 
-Path: `Views/Elements/<Domain>/`
+ Located in: UI/<Domain>/Views/Elements/
 
-- Reusable interactive UI components.
-- Examples:
-  - `PlaylistTrackItem`, `AlbumTrackItem`, `ArtistAlbumThumbnail`
-- Emit user actions to relevant views or the `Player`.
-- Fully encapsulated; follow MVU-like separation.
+- Self-contained, reusable visual modules.
+- Each component follows MVC conventions:
+  - Model holds UI state
+  - View handles rendering
+  - Controller manages user input and logic
+- Examples include:
+  - `ArtistListThumbnailView`, `AlbumTrackView`, `PlaylistTrackItemView`, etc.
+- Raise events or call controller methods to invoke Player actions or update state.
 
 ---
 
 ## 🎵 6. `Player`
 
-- Core playback engine:
-  - Play, Pause, Stop
-  - Seek, Loop, Volume
-- Listens to input from UI elements or views.
-- Maintains current playback state and persists:
-  - Last played track
-  - Playback queue
-- Triggered by `PlaylistView`, `AlbumTracksView`, and `UserControls`.
+Located in: Core/Player.cs
+
+- Audio engine powered by NAudio
+- Handles:
+  - Playback, seek, loop, volume
+  - Playback state persistence (e.g., last played track)
+- Invoked by:
+  - PlayerControlBarController
+  - View Controllers (e.g., `AlbumTracksViewController`, `PlaylistViewController`)
+  - Event emitters from UserControls
 
 ## 🖥️ 7. `Embedded Controls`
 
-These are persistent UI components embedded within MainForm that handle global application behavior and act as bridges between the user interface and the core logic.
+Persistent UI elements embedded in MainFormView, acting as global interfaces to core functionality.
 
-| **Control**        | **Description**                                                                            | **Interacts With** | **Role & Behavior**                                                             |
-| ------------------ | ------------------------------------------------------------------------------------------ | ------------------ | ------------------------------------------------------------------------------- |
-| `NavBar`           | Top navigation bar with buttons to switch between views (Artists, Albums, Playlists, etc.) | `Views`            | Handles view transitions by invoking appropriate view loading logic.            |
-| `PlayerControlBar` | Bottom playback control panel showing track info, play/pause, seek, volume                 | `Player`, `Views`  | Central control for playback; reflects and controls current track state.        |
-| `SystemTrayIcon`   | Adds application to system tray with right-click menu and restore/minimize                 | `Player`, OS Tray  | Enables background playback, minimize-to-tray functionality, and tray commands. |
+| Component          | Path                       | Interacts With    | Purpose                                                          |
+| ------------------ | -------------------------- | ----------------- | ---------------------------------------------------------------- |
+| `NavBar`           | `Shared/NavBar/`           | `Views`           | Switches between core views (Artists, Albums, Playlists)         |
+| `PlayerControlBar` | `Shared/PlayerControlBar/` | `Player`, `Views` | Controls playback and displays track info                        |
+| `SystemTrayIcon`   | `Shared/SystemTrayIcon/`   | `Player`, OS Tray | Enables minimize-to-tray, tray commands, and background playback |
 
 ---
 
-## 📌 Notes
+## 📌 Design Notes
 
-- Views depend solely on `MusicLibrary` for data access.
-- Playback is isolated in `Player`, minimizing tight coupling.
-- `UserControls` act as bridges between UI and logic without direct dependencies.
-- Session state is restored for seamless continuity.
+- Loose Coupling: Views and controls depend on `MusicLibrary` for data and Player for playback—no direct cross-dependencies.
+- Modularity: Views use UserControls exclusively for internal UI structure, supporting high reusability.
+- State Restoration: `AppInitializer` restores last session state (e.g., queue, track position) to ensure user continuity.
+- Encapsulation: Each UserControl manages its own state and behavior independently via MVC triplets.
 
 ---
 
@@ -122,14 +130,14 @@ These are persistent UI components embedded within MainForm that handle global a
 
 ```mermaid
 graph TD
-    AppInitializer["🧭 AppInitializer"] -->|Scan /Music & /Data folders| LibraryLoader["📂 LibraryLoader"]
-    LibraryLoader -->|Extract metadata with TagLibSharp| MusicLibrary["🧠 MusicLibrary"]
-    LibraryLoader -->|Populate Artists Albums Tracks Playlists| MusicLibrary
-    AppInitializer -->|Initialize views with Library data| Views["🖼️ UI Views"]
-    Views -->|Create UserControls like ArtistListItem AlbumListItem PlaylistItem| UserControls["🧩 UserControls"]
-    UserControls -->|Play Pause Seek on interaction| Player["🎵 Player"]
-    AppInitializer -->|Restore last played state from JSON| Player
-    AppInitializer -->|Attach system components| MainForm["🖥️ MainForm"]
+    AppInitializer["🧭 AppInitializer"] -->|Scan /Music & /Data| LibraryLoader["📂 LibraryLoader"]
+    LibraryLoader -->|Extract Metadata| MusicLibrary["🧠 MusicLibrary"]
+    LibraryLoader -->|Build Domain Models| MusicLibrary
+    AppInitializer -->|Create Views Using MusicLibrary| Views["🖼️ UI Views"]
+    Views -->|Instantiate UI Components| UserControls["🧩 UserControls"]
+    UserControls -->|Trigger Playback Events| Player["🎵 Player"]
+    AppInitializer -->|Restore Last Played State| Player
+    AppInitializer -->|Attach UI Infrastructure| MainForm["🖥️ MainForm"]
     MainForm --> NavBar
     MainForm --> PlayerControlBar
     MainForm --> SystemTrayIcon

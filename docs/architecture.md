@@ -49,11 +49,8 @@ graph TD
 ```
 
 1. The View captures UI events (e.g. "Play", "Select Album").
-
 2. The Controller responds to those events by updating the Model or invoking core services.
-
 3. The Model is updated.
-
 4. The View reacts automatically to reflect the new state.
 
 ---

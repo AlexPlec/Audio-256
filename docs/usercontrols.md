@@ -78,6 +78,7 @@ Reusable UserControl-based components used across **Audio-256**, grouped by doma
 ## 🧱 Control Structure
 
 Each UserControl is implemented using the MVC pattern and resides in:
+
 ```plaintext
 UI/<Domain>/<ComponentName>/
 ├── Models/        // Holds component-specific state
@@ -98,9 +99,6 @@ UI/AlbumTracks/AlbumTrack/
 ## 🖼 Integration Guidelines
 
 - ✅ Reusable: Components are designed to be shared across views without modification.
-
 - 🎯 Consistent: All components follow unified styling (fonts, colors, padding).
-
 - 🧩 Composable: Built to slot into higher-level containers like AlbumTracksListView or PlaylistListView.
-
 - 🔄 State-driven: All visual states are derived from their Model, updated via the Controller.
