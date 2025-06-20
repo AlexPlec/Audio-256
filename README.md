@@ -18,7 +18,7 @@
 
 - 🖥️ **Windows Desktop Application** with clean, responsive UI  
 - 📂 **Library View** for managing your complete audio collection  
-- 🎨 **Artists View**, **Albums View**, **Songs View**, and **Playlists View** for versatile browsing  
+- 🎨 **Artists View**, **Albums View**, **Tracks View**, and **Playlists View** for versatile browsing  
 - 📜 **Metadata-Based Organization** using embedded tags (Title, Album, Artist)  
 - 🔁 **History of Last Playlist** automatically reloaded on app start  
 - ➕ **User-Created Playlists** with persistent saving  
