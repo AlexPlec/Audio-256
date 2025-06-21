@@ -6,41 +6,44 @@ This section outlines the internal structure of **Audio-256**, including project
 
 ## 📚 Table of Contents
 
-- 🧩 [MVC Architecture Pattern](#-mvc-architecture-pattern)
+- 🧩 [MVC + Mediator Architecture](#-mvc--mediator-architecture)
     - ✳️ [Overview](#️-overview)
-    - 🧱 [Example Breakdown (AlbumTracks module)](#-example-breakdown)
+    - 🧱 [AlbumTracks Example](#-albumtracks-example)
     - 🔁 [Interaction Flow](#-interaction-flow)
 - 📁 [Project Structure](#-project-structure)
-- 🛠 [App Classes](#-app-classes)
-- 📦 [Core Classes](#-core-classes)
-- 🖼 [Forms / Views](#-forms--views)
-- 🗂 [Data Structure](#-data-structure)
+- 🚦 [App Classes](#-app-classes)
+- 📦 [Core Services](#-core-services)
+- 🖼 [UI Views & Features](#-ui-views--features)
+- 🗂 [Data Organization](#-data-organization)
 - 📦 [External Libraries](#-external-libraries)
-- 🛠 [Build & Run](#-build--run)
+- ▶️ [Build & Run](#-build--run)
 
 ---
 
-## 🧩 MVC Architecture Pattern
+## 🧩 MVC + Mediator Architecture
 
-**Audio-256** adopts a Modular MVC (Model–View–Controller) pattern enhanced with a Mediator Pattern, promoting clear separation of concerns, high modularity, and scalable communication between decoupled components.
+**Audio-256** is built on a modular **Model–View–Controller (MVC)** foundation, enhanced by a custom **Mediator** to decouple component communication.
 
 ### ✳️ Overview
-| Layer              | Role                                                                                                                                              |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Model (M)**      | Stores UI-specific data and state (e.g., current album, track list, volume level).                                                                |
-| **View (V)**       | Defines the visual layout and behavior. Reacts to UI events and binds to the model for data updates.                                              |
-| **Controller (C)** | Handles business logic, user interaction, and coordination between Model and View. Communicates with services through `MediatorPattern`.          |
-| **Mediator**       | Decouples Views, Controllers, and Services by acting as an event/message dispatcher across the app. Enables scalable, event-driven communication. |
+| Layer              | Role                                                                                      |
+| ------------------ | ----------------------------------------------------------------------------------------- |
+| **Model (M)**      | Stores UI state (e.g., selected track, current playlist, volume level)                    |
+| **View (V)**       | Handles UI rendering, event binding, and layout updates                                   |
+| **Controller (C)** | Coordinates state changes, user input, and service access via the `MediatorPattern`       |
+| **Mediator**       | Global event dispatcher for decoupled communication between controllers and core services |
+
+This architecture supports **high cohesion** within modules and **loose coupling** between them, enabling flexible component reuse and testing.
+
 
 ---
 
-### 🧱 Example Breakdown (AlbumTracks module)
+### 🧱 AlbumTracks Example
 
-| File                           | Responsibility                                                                               |
-| ------------------------------ | -------------------------------------------------------------------------------------------- |
-| `AlbumTracksViewModel.cs`      | Holds selected album, track list, playback selection, and UI state                           |
-| `AlbumTracksView.cs`           | Displays album info and renders list of tracks; triggers interaction events                  |
-| `AlbumTracksViewController.cs` | Loads album data from `MusicLibrary`, updates model, responds to user input via the Mediator |
+| File                           | Role                                                                                  |
+| ------------------------------ | ------------------------------------------------------------------------------------- |
+| `AlbumTracksViewModel.cs`      | Maintains UI state (e.g., track list, album info, selected track index)               |
+| `AlbumTracksView.cs`           | Displays the UI, binds to model data, and emits user interaction events               |
+| `AlbumTracksViewController.cs` | Loads data from `MusicLibrary`, responds to events, and sends commands via `Mediator` |
 
 ---
 
@@ -48,20 +51,20 @@ This section outlines the internal structure of **Audio-256**, including project
 
 ```mermaid
 graph TD
-  A["User Interaction"] --> B["View"]
-  B --> C["Controller"]
-  C --> D["Model (Update)"]
-  C --> E["Mediator (Event Dispatch)"]
-  E --> F["Services (e.g. Player, MusicLibrary)"]
+  A["🎯 User Clicks Track"] --> B["🖼️ View"]
+  B --> C["🎮 Controller"]
+  C --> D["🧠 Model (State Update)"]
+  C --> E["📡 Mediator (Broadcast Event)"]
+  E --> F["🎵 Player / MusicLibrary"]
   D --> B
 ```
 
 ---
 
-1. The View captures a UI event (e.g. user clicks "Play").
-2. The Controller handles the input, updates the Model, and sends an event via the Mediator.
-3. The Mediator dispatches the event to the appropriate service (Player, MusicLibrary, etc.).
-4. The Model changes, triggering the View to update its display accordingly.
+1. **View** receives UI event (e.g., Play, Add to Playlist)
+2. **Controller** updates the **Model** and emits events through the Mediator
+3. **Mediator** dispatches the event to the corresponding service (e.g., **Player**, **LibraryLoader**)
+4. **Model** updates trigger UI changes in the **View**
 
 ---
 
@@ -225,46 +228,59 @@ Audio256/
 
 ---
 
-## 🛠 App Classes
-| Class            | Responsibility                                                                                                                                                 |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `AppInitializer` | Serves as the application entry point, coordinating startup logic such as loading data, initializing views, restoring session state, and wiring core services. |
-| `Program`        | Contains the main method launching the application, setting up the environment, and running the main form.                                                     |
-| `Resources`      | Holds static resources like images, icons, strings, and other assets used throughout the application UI.                                                       |
+## 🚦 App Classes
+
+| Class            | Role                                                                                           |
+| ---------------- | ---------------------------------------------------------------------------------------------- |
+| `AppInitializer` | Main startup coordinator: loads music, restores session, wires Mediator, and initializes views |
+| `Program`        | Application entry point — calls `AppInitializer`, launches `MainForm`                          |
+| `Resources`      | Shared assets (icons, fonts, static images) used throughout the UI                             |
 
 ---
 
-## 📦 Core Classes
+## 📦 Core Services
 
-| Class             | Responsibility                                                                                           |
-| ----------------- | -------------------------------------------------------------------------------------------------------- |
-| `Player`          | Manages audio playback (play, pause, stop, seek, volume, loop) using NAudio.                             |
-| `MusicLibrary`    | Stores and manages the entire collection of artists, albums, tracks, and playlists in memory.            |
-| `LibraryLoader`   | Scans local folders and loads music data and playlists from disk (e.g., JSON files, MP3 directories).    |
-| `MetadataHelper`  | Extracts detailed metadata (title, artist, album, length, cover art) from audio files using TagLibSharp. |
-| `MediatorPattern` | Implements a centralized event/message broker for decoupled communication between components and views.  |
-
----
-
-## 🖼 Forms / Views
-
-| Form / View | Description |
-|-------------|-------------|
-| `MainForm` | Main application window responsible for navigation, event handling, and layout control |
-| `Artists` | Displays all artists in the music library, providing overview and navigation to artist details |
-| `Albums` | Displays all albums across all artists, with album cover and title |
-| `ArtistAlbums` | Shows detailed view of a selected artist’s albums, including thumbnails and metadata |
-| `AlbumTracks` | Displays track list and detailed metadata for a selected album |
-| `Playlist` | Shows user-created playlists and the current playback queue with controls |
-| `PlaylistTracks` | Displays the track list and controls for a selected user-created playlist|
+| Class             | Role                                                                                                |
+| ----------------- | --------------------------------------------------------------------------------------------------- |
+| `Player`          | Manages playback (play, pause, stop, loop, volume), implemented via `NAudio`                        |
+| `MusicLibrary`    | Stores all music data (artists, albums, playlists) and exposes APIs for data access                 |
+| `LibraryLoader`   | Scans disk for MP3s and playlist files, loads them using `TagLibSharp`, injects into `MusicLibrary` |
+| `MetadataHelper`  | Extracts tags (title, artist, album art, duration) from MP3 files                                   |
+| `MediatorPattern` | Central publish/subscribe system that decouples components and routes events across the application |
 
 ---
 
-## 🗂 Data Structure
+## 🖼 UI Views & Features
 
-- **MP3 files** organized in folders: `/Music/Artist/Album/*.mp3`
-- **Playlists & history** stored in: `/Data/Playlists/*.json`
-- **Metadata** loaded from file tags (ID3v2 or similar)
+All views are structured as Modular MVC triplets under UI/<Feature>/, e.g.,:
+
+| View / Module    | Description                                                               |
+| ---------------- | ------------------------------------------------------------------------- |
+| `MainForm`       | Primary shell — hosts persistent controls (`NavBar`, `PlayerControlBar`)  |
+| `Artists`        | Grid of all artists in library                                            |
+| `Albums`         | Album list (cover, title) with selection logic                            |
+| `ArtistAlbums`   | Albums by a selected artist                                               |
+| `AlbumTracks`    | List of tracks in selected album with playback actions                    |
+| `Playlist`       | Displays all user-created playlists                                       |
+| `PlaylistTracks` | Track list for selected playlist with drag/drop, add/remove functionality |
+| `SystemTrayIcon` | Provides background playback control and OS tray integration              |
+
+```plaintext
+UI/FeatureName/
+├── Models/        // UI State & Data
+├── Views/         // UI Layout and Render Logic
+└── Controllers/   // Input, Logic, and Mediation
+```
+
+---
+
+## 🗂 Data Organization
+
+| Type      | Location                       | Format       |
+| --------- | ------------------------------ | ------------ |
+| MP3 Audio | `/Music/Artist/Album/*.mp3`    | File system  |
+| Playlists | `/Data/Playlists/*.json`       | JSON         |
+| Metadata  | Embedded ID3 tags (via TagLib) | MP3 Internal |
 
 ---
 
@@ -278,12 +294,12 @@ Audio256/
 
 ---
 
-## 🛠 Build & Run
+## ▶️ Build & Run
+1. Clone or download the repo
+2. Open `Audio256.sln` in Visual Studio
+3. Restore NuGet packages (NAudio, TagLibSharp, Newtonsoft.Json)
+4. Build and run
 
-1. Open `Audio256.sln` in Visual Studio
-2. Restore NuGet packages (NAudio, TagLibSharp, Newtonsoft.Json)
-3. Build and run
-
-Minimum Requirements:
+✅ Requirements:
 - .NET Framework 4.7.2+
 - Visual Studio 2019 or later
