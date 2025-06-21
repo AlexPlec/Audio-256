@@ -70,9 +70,11 @@ This structure ensures maintainability, reusability, and testability throughout 
 
 ## 📖 Technical Documentation
 
-- 📐 [Technical Architecture](docs/architecture.md) — Overview of the system layout
-- 🧩 [Custom UserControls](docs/usercontrols.md) —  Modular design patterns
-- 🔄 [Component Overview](docs/components.md) — Initialization and interaction diagrams
+- 🏗️ [Technical Architecture](docs/architecture.md) — High-level overview of system structure and responsibilities
+- 🧱 [Custom UserControls](docs/usercontrols.md) — Reusable modular components and design principles
+- 🔧 [Component Overview](docs/components.md) — Initialization flow, communication patterns, and component responsibilities
+- 📋 [Audio-256 Development Task List](docs/tasklist.md) — Categorized breakdown of current and planned development tasks
+- ✅ [Audio-256 Development To-Do List](docs/todo.md) — Actionable checklist for implementation, testing, and refactoring
 
 ---
 

@@ -1,4 +1,4 @@
-# 🛠 Technical Architecture
+# 🏗️ Technical Architecture
 
 This section outlines the internal structure of **Audio-256**, including project structure, core components, views.
 

@@ -1,4 +1,4 @@
-# 🔄 Component Overview
+# 🔧 Component Overview
 
 Describes how key components of the application interact and initialize.
 

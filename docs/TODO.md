@@ -1,4 +1,4 @@
-# Audio-256 Development To-Do List
+# ✅ Audio-256 Development To-Do List
 
 ## 🏗 Architecture & Core Framework
 - [x] Refactor existing UI into proper MVC triplets (Model, View, Controller per feature)

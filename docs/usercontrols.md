@@ -1,4 +1,4 @@
-# 🧩 Custom UserControls
+# 🧱 Custom UserControls
 
 Modular, self-contained UI components in **Audio-256**, built using a **Model–View–Controller (MVC)** pattern and integrated via a centralized **Mediator** for decoupled communication. These controls form the visual foundation of the app and enable clean reuse across different views.
 

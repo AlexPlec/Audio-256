@@ -1,4 +1,4 @@
-# Audio-256 Development Task List
+# 📋 Audio-256 Development Task List
 
 ## 🔹 Core / App
 
