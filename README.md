@@ -73,7 +73,6 @@ This structure ensures maintainability, reusability, and testability throughout 
 - 📐 [Technical Architecture](docs/architecture.md) — Overview of the system layout
 - 🧩 [Custom UserControls](docs/usercontrols.md) —  Modular design patterns
 - 🔄 [Component Overview](docs/components.md) — Initialization and interaction diagrams
-- 🧠 [Mediator Pattern](docs/mediator.md) — Event system powering decoupled communication
 
 ---
 

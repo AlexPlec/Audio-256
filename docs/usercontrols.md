@@ -1,6 +1,6 @@
 # 🧩 Custom UserControls
 
-Descriptions of reusable visual components that form the building blocks of Audio-256’s UI.
+Modular, self-contained UI components in **Audio-256**, built using a **Model–View–Controller (MVC)** pattern and integrated via a centralized **Mediator** for decoupled communication. These controls form the visual foundation of the app and enable clean reuse across different views.
 
 ---
 

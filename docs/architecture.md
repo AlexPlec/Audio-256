@@ -16,7 +16,7 @@ This section outlines the internal structure of **Audio-256**, including project
 - 🖼 [UI Views & Features](#-ui-views--features)
 - 🗂 [Data Organization](#-data-organization)
 - 📦 [External Libraries](#-external-libraries)
-- ▶️ [Build & Run](#-build--run)
+- ▶️ [Build & Run](#️-build--run)
 
 ---
 
