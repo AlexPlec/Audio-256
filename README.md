@@ -1,12 +1,13 @@
 # 🎵 Audio-256: Open Source Audio Player
 
-**Audio-256** is a feature-rich, open source audio player for Windows. Built for performance and simplicity, it offers a modern and intuitive interface with efficient handling of music libraries in **MP3 format**. Designed to use minimal system resources, Audio-256 is perfect for both casual listening and power users who want control over their audio library.
+**Audio-256** is a lightweight, modular, and extensible MP3 audio player for Windows. Built with a clean **MVC architecture** and an event-driven **Mediator pattern**, it offers intuitive user experiences and well-structured, maintainable code. Whether you're a music lover or a developer, **Audio-256** balances performance, usability, and design flexibility.
 
 ---
 
 ## 📚 Table of Contents
 
 - 🚀 [Key Features](#-key-features)
+- 🧩 [Architecture Overview](#-architecture-overview)
 - ⚙️ [Technical Specifications](#️-technical-specifications)
 - 💡 [User Experience Highlights](#-user-experience-highlights)
 - 📖 [Technical Documentation](#-technical-documentation)
@@ -16,43 +17,63 @@
 
 ## 🚀 Key Features
 
-- 🖥️ **Windows Desktop Application** with clean, responsive UI  
-- 📂 **Library View** for managing your complete audio collection  
-- 🎨 **Artists View**, **Albums View**, **Tracks View**, and **Playlists View** for versatile browsing  
-- 📜 **Metadata-Based Organization** using embedded tags (Title, Album, Artist)  
-- 🔁 **History of Last Playlist** automatically reloaded on app start  
-- ➕ **User-Created Playlists** with persistent saving  
-- 🎧 **MP3 Format Support**  
-- 🧠 **Optimized for Low Resource Usage**  
-- 🛠️ **System Tray Integration** for background control and quick access  
+- 🪟 **Modern Windows Desktop UI** with modular UserControls
+- 📁 **Dynamic Library Management** with metadata-based indexing
+- 🧑‍🎨 **Artists, Albums, Tracks, Playlists Views** for flexible browsing
+- 🔁 **Persistent Playlist History** restored on app launch
+- ➕ **User-Created Playlists** stored in structured JSON
+- 📦 **MVC Pattern** for clear separation of state, rendering, and logic
+- 🔄 **Mediator Pattern** for decoupled component communication
+- 🎧 **Smooth MP3 Playback** via NAudio
+- 📌 **System Tray Integration** for background control
+
+---
+
+## 🧩 Architecture Overview
+
+**Audio-256** follows a modular **Model–View–Controller (MVC) pattern** in the UI layer and a global **Mediator** for event-driven communication.
+
+| Layer          | Responsibility                                                                 |
+| -------------- | ------------------------------------------------------------------------------ |
+| **Model**      | Stores UI state (selected track, volume, playlists, etc.)                      |
+| **View**       | Renders layout, binds UI elements to the model                                 |
+| **Controller** | Handles user input and state logic; interacts with services via Mediator       |
+| **Mediator**   | Facilitates decoupled messaging between views, services, and shared components |
+
+This structure ensures maintainability, reusability, and testability throughout the app.
 
 ---
 
 ## ⚙️ Technical Specifications
 
-- **Language & Framework**: C# (.NET Framework)  
-- **UI Framework**: Windows Forms  
-- **Audio Engine**: [NAudio](https://github.com/naudio/NAudio)  
-- **Metadata Parsing**: [TagLibSharp](https://github.com/mono/taglib-sharp)  
-- **Data Serialization**: [Newtonsoft.Json](https://www.newtonsoft.com/json)  
+| Tech          | Description                                         |
+| ------------- | --------------------------------------------------- |
+| Language      | [C# (.NET Framework)](https://dotnet.microsoft.com/en-us/languages/csharp)                                 |
+| UI Framework  | [Windows Forms](https://github.com/dotnet/winforms) |
+| Audio Engine  | [NAudio](https://github.com/naudio/NAudio)          |
+| Metadata      | [TagLibSharp](https://github.com/mono/taglib-sharp) |
+| Messaging     | In-house [Mediator pattern](docs/mediator.md) for pub/sub decoupling |
+| Serialization | [Newtonsoft.Json](https://www.newtonsoft.com/json)  |
 
 ---
 
 ## 💡 User Experience Highlights
 
-- 🎵 Seamless audio playback with reliable controls  
-- 💽 Quick browsing via metadata-rich views  
-- 💾 Automatically saves last-used playlist and restores it on launch  
-- 🖱️ Right-click tray menu for basic control (play/pause, next, exit)  
-- 📝 User playlists saved in structured JSON format  
+- 🎵 Seamless Playback with Play, Pause, Seek, Loop, Volume
+- 🧠 Low Memory Footprint and fast load times for large libraries
+- 💾 Session Persistence – automatically restores last playlist and playback state
+- 🖱️ System Tray Menu for playback control without opening the main window
+- 🗂️ Metadata-Driven Views – Artists, Albums, Tracks, and Playlists
+- 🧩 Custom UserControls for track items, thumbnails, search bars, and more
 
 ---
 
 ## 📖 Technical Documentation
 
-- 📐 [Technical Architecture](docs/architecture.md)
-- 🧩 [Custom UserControls](docs/usercontrols.md)
-- 🔄 [Component Overview](docs/components.md)
+- 📐 [Technical Architecture](docs/architecture.md) — Overview of the system layout
+- 🧩 [Custom UserControls](docs/usercontrols.md) —  Modular design patterns
+- 🔄 [Component Overview](docs/components.md) — Initialization and interaction diagrams
+- 🧠 [Mediator Pattern](docs/mediator.md) — Event system powering decoupled communication
 
 ---
 
