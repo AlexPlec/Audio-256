@@ -13,7 +13,7 @@ Describes how key components of the application interact and initialize.
   - 🖼️ [Views](#️-4-views)
   - 🧩 [UserControls](#-5-usercontrols)
   - 🎵 [Player](#-6-player)
-  - 📡 [MediatorPattern](#-7-mediatorpattern)
+  - 📡 [Mediator](#-7-mediator)
   - 🖥️ [Embedded Controls](#️-8-embedded-controls)
 - 📌 [Design Notes](#-design-notes)
 - 🧬 [Initialization Sequence](#-initialization-sequence)
@@ -28,7 +28,7 @@ graph TD
     LibraryLoader -->|Builds| MusicLibrary["🧠 MusicLibrary"]
     MusicLibrary -->|Provides Data To| Views["🖼️ Views"]
     Views -->|Render Layouts With| UserControls["🧩 UserControls"]
-    Views -->|Send Events| Mediator["📡 MediatorPattern"]
+    Views -->|Send Events| Mediator["📡 Mediator"]
     UserControls -->|Raise Events| Mediator
     Mediator -->|Dispatches To| Player["🎵 Player"]
     Mediator -->|Broadcasts To| Views
@@ -49,7 +49,7 @@ graph TD
 - Bootstraps:
   - `LibraryLoader` for scanning audio and metadata
   - `MusicLibrary` with structured data
-  - `MediatorPattern ` for centralized event dispatch
+  - `Mediator ` for centralized event dispatch
 - Constructs main UI views with dependencies injected.
 - Attaches persistent UI components (`NavBar`, `PlayerControlBar`, `TrayIcon`).
 
@@ -101,7 +101,7 @@ Located in: UI/<Domain>/Views/
   - Controller manages user input and logic
 - Examples include:
   - `ArtistListThumbnailView`, `AlbumTrackView`, `PlaylistTrackItemView`, etc.
-- Report interaction (e.g., click, drag, search) by raising events to MediatorPattern.
+- Report interaction (e.g., click, drag, search) by raising events to Mediator.
 
 ---
 
@@ -120,9 +120,9 @@ Located in: Core/Player.cs
 
   ---
 
-### 📡 7. MediatorPattern
+### 📡 7. Mediator
 
-Located in Core/MediatorPattern.cs
+Located in Core/Mediator.cs
 
 - Central event dispatcher for application-wide communication.
 - Promotes loose coupling between:
@@ -150,8 +150,8 @@ Persistent UI elements embedded in MainFormView, acting as global interfaces to 
 ## 📌 Design Notes
 
 ### 🔗 Decoupled Architecture
-- Loose Coupling: Views, controls, and services interact indirectly via `MediatorPattern` or shared data (`MusicLibrary`), avoiding direct dependencies.
-- Event-Driven Communication: User interactions and logic responses are mediated through `MediatorPattern`, enabling clean separation between UI and core functionality.
+- Loose Coupling: Views, controls, and services interact indirectly via `Mediator` or shared data (`MusicLibrary`), avoiding direct dependencies.
+- Event-Driven Communication: User interactions and logic responses are mediated through `Mediator`, enabling clean separation between UI and core functionality.
 
 ---
 
@@ -182,7 +182,7 @@ graph TD
     LibraryLoader -->|Extract Metadata| MusicLibrary["🧠 MusicLibrary"]
     LibraryLoader -->|Build Domain Models| MusicLibrary
     AppInitializer -->|Create Views Using MusicLibrary| Views["🖼️ UI Views"]
-    AppInitializer -->|Initialize Event Bus| Mediator["📡 MediatorPattern"]
+    AppInitializer -->|Initialize Event Bus| Mediator["📡 Mediator"]
     Views -->|Instantiate UI Components| UserControls["🧩 UserControls"]
     UserControls -->|Raise Events| Mediator
     Views -->|Raise Events| Mediator

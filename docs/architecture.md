@@ -84,7 +84,7 @@ Audio256/
 │   ├── MusicLibrary.cs
 │   ├── MetadataHelper.cs
 │   ├── LibraryLoader.cs
-│   └── MediatorPattern.cs   
+│   └── Mediator.cs   
 │
 └── UI/                                    
     │
@@ -232,7 +232,7 @@ Audio256/
 
 | Class            | Role                                                                                           |
 | ---------------- | ---------------------------------------------------------------------------------------------- |
-| `AppInitializer` | Main startup coordinator: loads music, restores session, wires Mediator, and initializes views |
+| `AppInitializer` | Main startup coordinator: loads music, restores session, wires `Mediator`, and initializes views |
 | `Program`        | Application entry point — calls `AppInitializer`, launches `MainForm`                          |
 | `Resources`      | Shared assets (icons, fonts, static images) used throughout the UI                             |
 
@@ -246,7 +246,7 @@ Audio256/
 | `MusicLibrary`    | Stores all music data (artists, albums, playlists) and exposes APIs for data access                 |
 | `LibraryLoader`   | Scans disk for MP3s and playlist files, loads them using `TagLibSharp`, injects into `MusicLibrary` |
 | `MetadataHelper`  | Extracts tags (title, artist, album art, duration) from MP3 files                                   |
-| `MediatorPattern` | Central publish/subscribe system that decouples components and routes events across the application |
+| `Mediator`        | Central publish/subscribe system that decouples components and routes events across the application |
 
 ---
 
