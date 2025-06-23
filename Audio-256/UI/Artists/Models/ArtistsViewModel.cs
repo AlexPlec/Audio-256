@@ -1,7 +1,7 @@
 ﻿namespace Audio_256.UI.Artists.Models
 {
-    internal class ArtistsViewModel
+    public class ArtistsViewModel
     {
-
+        public List<ArtistListThumbnailModel> ArtistThumbnails { get; set; } = [];
     }
 }

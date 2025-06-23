@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Audio_256.UI.MainForm.Models
+﻿namespace Audio_256.UI.MainForm.Models
 {
-    internal class MainFormModel
+    public class MainFormModel
     {
+        public string Title { get; set; } = "Audio256 Player";
     }
 }
