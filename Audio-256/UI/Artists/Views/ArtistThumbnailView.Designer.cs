@@ -1,6 +1,6 @@
 ﻿namespace Audio_256.UI.Artists.Views
 {
-    partial class ArtistListThumbnailView
+    partial class ArtistThumbnailView
     {
         /// <summary> 
         /// Required designer variable.

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Audio_256.UI.Albums.Models
+﻿namespace Audio_256.UI.Albums.Models
 {
-    internal class AlbumsViewModel
+    public class AlbumsViewModel
     {
+        public List<AlbumThumbnailModel> AlbumThumbnails { get; set; } = [];
     }
 }

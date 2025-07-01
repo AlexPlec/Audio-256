@@ -1,6 +1,6 @@
 ﻿namespace Audio_256.UI.Albums.Views
 {
-    partial class AlbumsView
+    partial class AlbumThumbnailView
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,31 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            flowLayoutPanel = new FlowLayoutPanel();
+            pictureBox = new PictureBox();
+            label = new Label();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             SuspendLayout();
             // 
-            // flowLayoutPanel
+            // pictureBox
             // 
-            flowLayoutPanel.AutoScroll = true;
-            flowLayoutPanel.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel.Location = new Point(3, 3);
-            flowLayoutPanel.Name = "flowLayoutPanel";
-            flowLayoutPanel.Size = new Size(103, 100);
-            flowLayoutPanel.TabIndex = 0;
-            flowLayoutPanel.WrapContents = false;
+            pictureBox.Location = new Point(3, 3);
+            pictureBox.Name = "pictureBox";
+            pictureBox.Size = new Size(100, 50);
+            pictureBox.TabIndex = 0;
+            pictureBox.TabStop = false;
             // 
-            // AlbumsView
+            // label
+            // 
+            label.AutoSize = true;
+            label.Location = new Point(109, 20);
+            label.Name = "label";
+            label.Size = new Size(43, 15);
+            label.TabIndex = 1;
+            label.Text = "Album";
+            // 
+            // AlbumThumbnailView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(flowLayoutPanel);
-            Name = "AlbumsView";
-            Size = new Size(118, 112);
+            AutoSize = true;
+            Controls.Add(label);
+            Controls.Add(pictureBox);
+            Name = "AlbumThumbnailView";
+            Size = new Size(160, 63);
+            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private FlowLayoutPanel flowLayoutPanel;
+        private PictureBox pictureBox;
+        private Label label;
     }
 }

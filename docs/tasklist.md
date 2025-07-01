@@ -3,7 +3,7 @@
 ## 🔹 Core / App
 
 ### App/
-- [ ] Setup application startup flow in `AppInitializer.cs` (load music, setup mediator, initialize views)
+- [x] Setup application startup flow in `AppInitializer.cs` (load music, setup mediator, initialize views)
 - [ ] Implement graceful shutdown and save session state in `AppInitializer.cs`
 - [ ] Ensure `Program.cs` properly launches main form and handles exceptions
 - [ ] Organize and optimize shared resources under `Resources/`
@@ -12,16 +12,16 @@
 - [ ] Complete `Player.cs` functionality: play, pause, stop, volume, looping, and event notifications
 - [ ] Implement playback events and integration with Mediator (`TrackStarted`, `TrackEnded`, etc.)
 - [ ] Finalize `MusicLibrary.cs` to provide centralized music data API (CRUD for tracks, albums, playlists)
-- [ ] Implement file scanning and loading logic in `LibraryLoader.cs`
+- [x] Implement file scanning and loading logic in `LibraryLoader.cs`
 - [ ] Complete `MetadataHelper.cs` to extract all relevant tags and album art from audio files
-- [ ] Implement and test `MediatorPattern.cs` as a global event bus
+- [x] Implement and test `MediatorPattern.cs` as a global event bus
 
 ## 🔹 UI Modules
 
 ### MainForm/
-- [ ] Implement `MainFormModel.cs` for main app state (active view, window size, etc.)
-- [ ] Develop `MainFormView.cs` with layout hosting NavBar, PlayerControlBar, main content area
-- [ ] Create `MainFormController.cs` to coordinate UI events and mediator subscriptions
+- [x] Implement `MainFormModel.cs` for main app state (active view, window size, etc.)
+- [x] Develop `MainFormView.cs` with layout hosting NavBar, PlayerControlBar, main content area
+- [x] Create `MainFormController.cs` to coordinate UI events and mediator subscriptions
 
 ### Shared/
 
@@ -53,16 +53,16 @@
 - [ ] Add `SystemTrayIconController` to handle tray events and communicate via Mediator
 
 ### Artists/
-- [ ] Implement `ArtistsViewModel.cs` with artist list and selected artist
-- [ ] Build `ArtistsView.cs` for artist grid/list display
-- [ ] Implement `ArtistsViewController.cs` for loading artist data and handling user interaction
-- [ ] Implement `ArtistListThumbnailModel.cs`, `ArtistListThumbnailView.cs`, and `ArtistListThumbnailController.cs` for individual artist preview components
+- [x] Implement `ArtistsViewModel.cs` with artist list and selected artist
+- [x] Build `ArtistsView.cs` for artist grid/list display
+- [x] Implement `ArtistsViewController.cs` for loading artist data and handling user interaction
+- [x] Implement `ArtistThumbnailModel.cs`, `ArtistThumbnailView.cs`, and `ArtistThumbnailController.cs` for individual artist preview components
 
 ### Albums/
-- [ ] Implement `AlbumsViewModel.cs` to manage albums data and selection
-- [ ] Build `AlbumsView.cs` for album list/grid UI
-- [ ] Implement `AlbumsViewController.cs` to manage album loading, selection
-- [ ] Create `AlbumListThumbnail` MVC to display album cover + title, add click handling
+- [x] Implement `AlbumsViewModel.cs` to manage albums data and selection
+- [x] Build `AlbumsView.cs` for album list/grid UI
+- [x] Implement `AlbumsViewController.cs` to manage album loading, selection
+- [x] Create `AlbumThumbnail` MVC to display album cover + title, add click handling
 
 ### ArtistAlbums/
 - [ ] Implement `ArtistAlbumsViewModel.cs` for albums filtered by artist

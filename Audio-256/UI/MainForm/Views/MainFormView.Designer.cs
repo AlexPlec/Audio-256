@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             artistsView = new Audio_256.UI.Artists.Views.ArtistsView();
+            albumsView = new Audio_256.UI.Albums.Views.AlbumsView();
             SuspendLayout();
             // 
             // artistsView
@@ -38,11 +39,19 @@
             artistsView.Size = new Size(144, 144);
             artistsView.TabIndex = 0;
             // 
+            // albumsView
+            // 
+            albumsView.Location = new Point(162, 12);
+            albumsView.Name = "albumsView";
+            albumsView.Size = new Size(150, 150);
+            albumsView.TabIndex = 1;
+            // 
             // MainFormView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(albumsView);
             Controls.Add(artistsView);
             Name = "MainFormView";
             Text = "Form1";
@@ -52,5 +61,6 @@
         #endregion
 
         private UI.Artists.Views.ArtistsView artistsView;
+        private UI.Albums.Views.AlbumsView albumsView;
     }
 }
