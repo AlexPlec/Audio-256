@@ -40,7 +40,7 @@ Reusable UserControl-based components used across **Audio-256**, grouped by doma
 
 | Component             | Location Path                              | Used In       | Purpose                                 |
 | --------------------- | ------------------------------------------ | ------------- | --------------------------------------- |
-| `ArtistListThumbnail` | `Artists/Views/ArtistListThumbnailView.cs` | `ArtistsView` | Clickable artist preview (name + image) |
+| `ArtistThumbnail`     | `Artists/Views/ArtistThumbnailView.cs`     | `ArtistsView` | Clickable artist preview (name + image) |
 
 ---
 
@@ -50,7 +50,7 @@ Reusable UserControl-based components used across **Audio-256**, grouped by doma
 
 | Component              | Location Path                                    | Used In            | Purpose                                                         |
 | ---------------------- | ------------------------------------------------ | ------------------ | --------------------------------------------------------------- |
-| `AlbumListThumbnail`   | `Albums/Views/AlbumListThumbnailView.cs`         | `AlbumsView`       | Album preview with cover and title, in a responsive scroll grid |
+| `AlbumThumbnail`       | `Albums/Views/AlbumThumbnailView.cs`             | `AlbumsView`       | Album preview with cover and title, in a responsive scroll grid |
 | `ArtistAlbumThumbnail` | `ArtistAlbums/Views/ArtistAlbumThumbnailView.cs` | `ArtistAlbumsView` | Artist-specific album view with compact display and metadata    |
 
 ---

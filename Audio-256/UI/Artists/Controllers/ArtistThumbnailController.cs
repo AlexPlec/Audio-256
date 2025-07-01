@@ -4,14 +4,14 @@ using Audio_256.UI.Artists.Views;
 
 namespace Audio_256.UI.Artists.Controllers
 {
-    internal class ArtistListThumbnailController
+    internal class ArtistThumbnailController
     {
-        private readonly ArtistListThumbnailModel _model;
-        private readonly ArtistListThumbnailView _view;
+        private readonly ArtistThumbnailModel _model;
+        private readonly ArtistThumbnailView _view;
         private readonly IMediator _mediator;
-        public ArtistListThumbnailController(
-            ArtistListThumbnailModel model,
-            ArtistListThumbnailView view,
+        public ArtistThumbnailController(
+            ArtistThumbnailModel model,
+            ArtistThumbnailView view,
             IMediator mediator)
         {
             _model = model;
@@ -25,6 +25,6 @@ namespace Audio_256.UI.Artists.Controllers
         {
             _mediator.Publish("ARTIST_SELECTED", _model);
         }
-        public ArtistListThumbnailView GetView() => _view;
+        public ArtistThumbnailView GetView() => _view;
     }
 }

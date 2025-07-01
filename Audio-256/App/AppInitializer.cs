@@ -1,12 +1,21 @@
-﻿using Audio_256.Core;
-
-public static class AppInitializer
+﻿namespace Audio_256.App
 {
-    public static IMediator Mediator { get; private set; }
+    using Audio_256.Core;
 
-    public static void Initialize()
+    public static class AppInitializer
     {
-        Mediator = new Mediator();
-        // Pass Mediator to controllers
+        public static IMediator? Mediator { get; private set; }
+        public static MusicLibrary? Library { get; private set; }
+
+        public static void Initialize()
+        {
+            Mediator = new Mediator();
+            Library = new MusicLibrary();
+
+            var loader = new LibraryLoader(Library);
+            loader.Load();
+
+            // Now Mediator and Library are available globally
+        }
     }
 }

@@ -100,7 +100,7 @@ Located in: UI/<Domain>/Views/
   - View handles rendering
   - Controller manages user input and logic
 - Examples include:
-  - `ArtistListThumbnailView`, `AlbumTrackView`, `PlaylistTrackItemView`, etc.
+  - `ArtistThumbnailView`, `AlbumTrackView`, `PlaylistTrackItemView`, etc.
 - Report interaction (e.g., click, drag, search) by raising events to Mediator.
 
 ---

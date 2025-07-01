@@ -28,8 +28,8 @@ namespace Audio_256.UI.Artists.Controllers
 
             foreach (var item in _model.ArtistThumbnails)
             {
-                var itemView = new ArtistListThumbnailView();
-                var controller = new ArtistListThumbnailController(item, itemView, _mediator);
+                var itemView = new ArtistThumbnailView();
+                var controller = new ArtistThumbnailController(item, itemView, _mediator);
                 _view.AddItem(controller.GetView());
             }
         }
@@ -38,7 +38,7 @@ namespace Audio_256.UI.Artists.Controllers
             foreach (var model in _model.ArtistThumbnails)
                 model.IsSelected = false;
 
-            if (data is ArtistListThumbnailModel selected)
+            if (data is ArtistThumbnailModel selected)
                 selected.IsSelected = true;
 
             Initialize(); // Refresh views

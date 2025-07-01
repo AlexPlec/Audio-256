@@ -141,24 +141,24 @@ Audio256/
     ├── Artists/
     │   ├── Models/
     │   │   ├── ArtistsViewModel.cs
-    │   │   └── ArtistListThumbnailModel.cs
+    │   │   └── ArtistThumbnailModel.cs
     │   ├── Views/
     │   │   ├── ArtistsView.cs
-    │   │   └── ArtistListThumbnailView.cs
+    │   │   └── ArtistThumbnailView.cs
     │   └── Controllers/
     │       ├── ArtistsViewController.cs
-    │       └── ArtistListThumbnailController.cs
+    │       └── ArtistThumbnailController.cs
     │
     ├── Albums/
     │   ├── Models/
     │   │   ├── AlbumsViewModel.cs
-    │   │   └── AlbumListThumbnailModel.cs
+    │   │   └── AlbumThumbnailModel.cs
     │   ├── Views/
     │   │   ├── AlbumsView.cs
-    │   │   └── AlbumListThumbnailView.cs
+    │   │   └── AlbumThumbnailView.cs
     │   └── Controllers/
     │       ├── AlbumsViewController.cs
-    │       └── AlbumListThumbnailController.cs
+    │       └── AlbumThumbnailController.cs
     │
     ├── ArtistAlbums/
     │   ├── Models/

@@ -2,6 +2,6 @@
 {
     public class ArtistsViewModel
     {
-        public List<ArtistListThumbnailModel> ArtistThumbnails { get; set; } = [];
+        public List<ArtistThumbnailModel> ArtistThumbnails { get; set; } = [];
     }
 }

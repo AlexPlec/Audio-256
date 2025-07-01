@@ -396,3 +396,7 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+Audio-256/App/Resources/music.json
+/Music/*
+!/Music/.gitkeep
+!/Playlists/.gitkeep

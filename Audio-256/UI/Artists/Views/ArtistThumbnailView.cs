@@ -2,10 +2,10 @@
 
 namespace Audio_256.UI.Artists.Views
 {
-    public partial class ArtistListThumbnailView : UserControl
+    public partial class ArtistThumbnailView : UserControl
     {
-        private ArtistListThumbnailModel? _model;
-        public ArtistListThumbnailView()
+        private ArtistThumbnailModel? _model;
+        public ArtistThumbnailView()
         {
             InitializeComponent();
             CreateEvents();
@@ -16,7 +16,7 @@ namespace Audio_256.UI.Artists.Views
             pictureBox.Click += (s, e) => OnClick?.Invoke(this, e);
             label.Click += (s, e) => OnClick?.Invoke(this, e);
         }
-        public void SetData(ArtistListThumbnailModel model)
+        public void SetData(ArtistThumbnailModel model)
         {
             _model = model;
             label.Text = model.Name;
@@ -27,7 +27,7 @@ namespace Audio_256.UI.Artists.Views
         {
             BackColor = selected ? Color.LightBlue : Color.Transparent;
         }
-        public ArtistListThumbnailModel? GetModel() => _model;
+        public ArtistThumbnailModel? GetModel() => _model;
 
         public event EventHandler? OnClick;
     }
