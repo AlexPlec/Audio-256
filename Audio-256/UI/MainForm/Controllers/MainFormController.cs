@@ -1,6 +1,8 @@
 ﻿using Audio_256.Core;
 using Audio_256.UI.Albums.Controllers;
 using Audio_256.UI.Albums.Models;
+using Audio_256.UI.ArtistAlbums.Controllers;
+using Audio_256.UI.ArtistAlbums.Models;
 using Audio_256.UI.Artists.Controllers;
 using Audio_256.UI.Artists.Models;
 using Audio_256.UI.MainForm.Models;
@@ -16,6 +18,7 @@ namespace Audio_256.UI.MainForm.Controllers
 
         private ArtistsViewController? _artistsController;
         private AlbumsViewController? _albumsController;
+        private ArtistAlbumsViewController? _artistAlbumsController;
 
         public MainFormController(MainFormModel model, MainFormView view, IMediator mediator, MusicLibrary library)
         {
@@ -30,6 +33,7 @@ namespace Audio_256.UI.MainForm.Controllers
         {
             var artistModel = new ArtistsViewModel();
             var albumModel = new AlbumsViewModel();
+            var artistAlbumsModel = new ArtistAlbumsViewModel();
 
             foreach (var artist in _library.GetArtists())
             {
@@ -69,6 +73,7 @@ namespace Audio_256.UI.MainForm.Controllers
 
             _albumsController = new AlbumsViewController(albumModel, _view.AlbumsView, _mediator);
             _artistsController = new ArtistsViewController(artistModel, _view.ArtistView, _mediator);
+            _artistAlbumsController = new ArtistAlbumsViewController(artistAlbumsModel, _view.ArtistAlbumsView, _mediator, _library);
         }
 
     }

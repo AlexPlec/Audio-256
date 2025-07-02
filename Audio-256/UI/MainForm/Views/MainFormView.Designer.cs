@@ -30,6 +30,7 @@
         {
             artistsView = new Audio_256.UI.Artists.Views.ArtistsView();
             albumsView = new Audio_256.UI.Albums.Views.AlbumsView();
+            artistAlbumsView = new Audio_256.UI.ArtistAlbums.Views.ArtistAlbumsView();
             SuspendLayout();
             // 
             // artistsView
@@ -46,11 +47,19 @@
             albumsView.Size = new Size(150, 150);
             albumsView.TabIndex = 1;
             // 
+            // artistAlbumsView
+            // 
+            artistAlbumsView.Location = new Point(318, 12);
+            artistAlbumsView.Name = "artistAlbumsView";
+            artistAlbumsView.Size = new Size(150, 150);
+            artistAlbumsView.TabIndex = 2;
+            // 
             // MainFormView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(artistAlbumsView);
             Controls.Add(albumsView);
             Controls.Add(artistsView);
             Name = "MainFormView";
@@ -62,5 +71,6 @@
 
         private UI.Artists.Views.ArtistsView artistsView;
         private UI.Albums.Views.AlbumsView albumsView;
+        private UI.ArtistAlbums.Views.ArtistAlbumsView artistAlbumsView;
     }
 }

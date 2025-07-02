@@ -400,3 +400,4 @@ Audio-256/App/Resources/music.json
 /Music/*
 !/Music/.gitkeep
 !/Playlists/.gitkeep
+pullRequest.md
