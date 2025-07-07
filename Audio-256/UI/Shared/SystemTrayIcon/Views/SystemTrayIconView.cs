@@ -1,29 +1,22 @@
-﻿using Audio_256.UI.Shared.SystemTrayIcon.Models;
-
-namespace Audio_256.UI.Shared.SystemTrayIcon.Views
+﻿namespace Audio_256.UI.Shared.SystemTrayIcon.Views
 {
-    internal class SystemTrayIconView : IDisposable
+    internal class SystemTrayIconView
     {
-        private readonly NotifyIcon _notifyIcon;
-        private readonly SystemTrayIconModel _model;
-        private readonly ContextMenuStrip _contextMenu;
+        private readonly NotifyIcon _notifyIcon = new();
+        private readonly ContextMenuStrip _contextMenu = new();
 
         public event EventHandler? OnExitClicked;
         public event EventHandler? OnDoubleClick;
 
-        public SystemTrayIconView(SystemTrayIconModel model)
+        public SystemTrayIconView()
         {
-            _model = model;
-            _notifyIcon = new NotifyIcon();
-            _contextMenu = new ContextMenuStrip();
-
             InitializeIcon();
         }
         private void InitializeIcon()
         {
             _notifyIcon.Icon = SystemIcons.Application;
-            _notifyIcon.Text = _model.TooltipText;
-            _notifyIcon.Visible = _model.IsVisible;
+            _notifyIcon.Text = "Audio-256";
+            _notifyIcon.Visible = true;
 
             _notifyIcon.DoubleClick += (s, e) => OnDoubleClick?.Invoke(this, EventArgs.Empty);
 
@@ -32,13 +25,6 @@ namespace Audio_256.UI.Shared.SystemTrayIcon.Views
 
             _contextMenu.Items.Add(exitItem);
             _notifyIcon.ContextMenuStrip = _contextMenu;
-        }
-
-
-        public void Dispose()
-        {
-            _notifyIcon.Dispose();
-            _contextMenu.Dispose();
         }
     }
 }

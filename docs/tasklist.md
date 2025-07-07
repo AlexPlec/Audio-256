@@ -50,7 +50,7 @@
 #### SystemTrayIcon/
 - [x] Develop `SystemTrayIconModel` to track tray icon state
 - [x] Implement `SystemTrayIconView` to create and manage tray icon UI and context menu
-- [ ] Add `SystemTrayIconController` to handle tray events and communicate via Mediator
+- [x] Add `SystemTrayIconController` to handle tray events and communicate via Mediator
 
 ### Artists/
 - [x] Implement `ArtistsViewModel.cs` with artist list and selected artist
@@ -71,10 +71,10 @@
 - [x] Create `ArtistAlbumThumbnail` MVC components for compact album previews
 
 ### AlbumTracks/
-- [ ] Implement `AlbumTracksViewModel.cs` with track list and current track
-- [ ] Develop `AlbumTracksView.cs` to show track listing UI
-- [ ] Implement `AlbumTracksViewController.cs` to load tracks for selected album and handle play requests
-- [ ] Create MVC for `AlbumTracksHeader`, `AlbumTracksList`, and `AlbumTrackItem` subcomponents
+- [x] Implement `AlbumTracksViewModel.cs` with track list and current track
+- [x] Develop `AlbumTracksView.cs` to show track listing UI
+- [x] Implement `AlbumTracksViewController.cs` to load tracks for selected album and handle play requests
+- [x] Create MVC for `AlbumTracksHeader`, `AlbumTracksList`, and `AlbumTrackItem` subcomponents
 
 ### Playlist/
 - [ ] Implement `PlaylistViewModel.cs` for playlist collection and selected playlist

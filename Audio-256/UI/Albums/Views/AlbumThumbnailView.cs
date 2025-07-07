@@ -19,7 +19,7 @@ namespace Audio_256.UI.Albums.Views
         public void SetData(AlbumThumbnailModel model)
         {
             _model = model;
-            label.Text = model.Name;
+            label.Text = model.AlbumTitle;
             pictureBox.LoadAsync(model.ImagePath);
             SetSelected(model.IsSelected);
         }

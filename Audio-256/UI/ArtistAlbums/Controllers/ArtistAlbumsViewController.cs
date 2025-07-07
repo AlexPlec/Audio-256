@@ -68,6 +68,7 @@ namespace Audio_256.UI.ArtistAlbums.Controllers
                     album.CoverPath ?? "default_album.jpg",
                     album.Tracks.Count
                 )
+
                 {
                     IsSelected = false
                 };
@@ -77,7 +78,5 @@ namespace Audio_256.UI.ArtistAlbums.Controllers
 
             Initialize(); // Refresh view
         }
-
-
     }
 }
