@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Audio_256.UI.AlbumTracks.Views
+﻿namespace Audio_256.UI.AlbumTracks.Views
 {
     public partial class AlbumTracksView : UserControl
     {
+        public AlbumTracksListView AlbumTracksListView => albumTracksListView;
+        public AlbumTracksHeaderView AlbumTracksHeaderView => albumTracksHeaderView;
         public AlbumTracksView()
         {
             InitializeComponent();

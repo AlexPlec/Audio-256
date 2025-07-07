@@ -51,6 +51,8 @@ namespace Audio_256.Core
                     CoverPath = File.Exists(artistCover) ? artistCover : null
                 };
 
+                TimeSpan artistDuration = TimeSpan.Zero;
+
                 foreach (var albumDir in Directory.GetDirectories(artistDir))
                 {
                     var albumName = Path.GetFileName(albumDir);
@@ -62,25 +64,43 @@ namespace Audio_256.Core
                         CoverPath = File.Exists(albumCover) ? albumCover : null
                     };
 
-                    foreach (var file in Directory.GetFiles(albumDir, "*.mp3"))
+                    TimeSpan albumDuration = TimeSpan.Zero;
+
+                    var mp3Files = Directory.GetFiles(albumDir, "*.mp3").OrderBy(f => f).ToList();
+                    int trackNumber = 1;
+
+                    foreach (var file in mp3Files)
                     {
                         var tagFile = TagLib.File.Create(file);
+                        var trackDuration = tagFile.Properties.Duration;
+
                         var track = new Track
                         {
-                            Title = tagFile.Tag.Title,
+                            TrackNumber = trackNumber++,
+                            Title = tagFile.Tag.Title ?? Path.GetFileNameWithoutExtension(file),
                             FilePath = file,
-                            Duration = tagFile.Properties.Duration,
+                            Duration = trackDuration
                         };
 
                         album.Tracks.Add(track);
+                        albumDuration += trackDuration;
+
+                        if (album.Year == null && tagFile.Tag.Year > 0)
+                            album.Year = tagFile.Tag.Year.ToString();
                     }
+
+                    album.Duration = albumDuration;
+                    artistDuration += albumDuration;
 
                     artist.Albums.Add(album);
                 }
 
+
+                artist.Duration = artistDuration;
                 _library.Artists.Add(artist);
             }
         }
+
         private void SaveMusicJson()
         {
             string outputPath = @"C:\Users\accht\Documents\GitHub\Audio-256\Audio-256\App\Resources\music.json";

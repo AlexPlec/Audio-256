@@ -28,10 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            pictureBox = new PictureBox();
+            label = new Label();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
+            SuspendLayout();
+            // 
+            // pictureBox
+            // 
+            pictureBox.Location = new Point(3, 3);
+            pictureBox.Name = "pictureBox";
+            pictureBox.Size = new Size(100, 50);
+            pictureBox.TabIndex = 0;
+            pictureBox.TabStop = false;
+            // 
+            // label
+            // 
+            label.AutoSize = true;
+            label.Location = new Point(109, 22);
+            label.Name = "label";
+            label.Size = new Size(43, 15);
+            label.TabIndex = 1;
+            label.Text = "Album";
+            // 
+            // ArtistAlbumThumbnailView
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            Controls.Add(label);
+            Controls.Add(pictureBox);
+            Name = "ArtistAlbumThumbnailView";
+            Size = new Size(162, 62);
+            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private PictureBox pictureBox;
+        private Label label;
     }
 }

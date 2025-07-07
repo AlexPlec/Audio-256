@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Audio_256.UI.AlbumTracks.Models
+﻿namespace Audio_256.UI.AlbumTracks.Models
 {
-    internal class AlbumTracksViewModel
+    public class AlbumTracksViewModel
     {
+        public AlbumTracksListModel ListModel { get; } = new();
+        public List<AlbumTrackItemModel> AlbumTrackItemModels => ListModel.AlbumTrackItemModels;
     }
 }

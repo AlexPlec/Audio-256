@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Audio_256.UI.AlbumTracks.Models
+﻿namespace Audio_256.UI.AlbumTracks.Models
 {
-    internal class AlbumTrackItemModel
+    public class AlbumTrackItemModel(
+
+         string id,
+         int trackNumber,
+         string trackTitle,
+         string artistTitle,
+         int duration
+        )
     {
+        public string Id { get; set; } = id;
+        public int TrackNumber { get; set; } = trackNumber;
+        public string TrackTitle { get; set; } = trackTitle;
+        public string ArtistTitle { get; set; } = artistTitle;
+        public int Duration { get; set; } = duration;
+        public bool IsSelected { get; set; } = false;
     }
 }

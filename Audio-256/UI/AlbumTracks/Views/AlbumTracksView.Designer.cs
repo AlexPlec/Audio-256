@@ -28,10 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            albumTracksHeaderView = new AlbumTracksHeaderView();
+            albumTracksListView = new AlbumTracksListView();
+            SuspendLayout();
+            // 
+            // albumTracksHeaderView
+            // 
+            albumTracksHeaderView.Location = new Point(0, 0);
+            albumTracksHeaderView.Name = "albumTracksHeaderView";
+            albumTracksHeaderView.Size = new Size(278, 100);
+            albumTracksHeaderView.TabIndex = 0;
+            // 
+            // albumTracksListView
+            // 
+            albumTracksListView.Location = new Point(3, 106);
+            albumTracksListView.Name = "albumTracksListView";
+            albumTracksListView.Size = new Size(214, 163);
+            albumTracksListView.TabIndex = 1;
+            // 
+            // AlbumTracksView
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(albumTracksListView);
+            Controls.Add(albumTracksHeaderView);
+            Name = "AlbumTracksView";
+            Size = new Size(346, 298);
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private AlbumTracksHeaderView albumTracksHeaderView;
+        private AlbumTracksListView albumTracksListView;
     }
 }

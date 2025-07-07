@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Audio_256.UI.Shared.SystemTrayIcon.Models
+﻿namespace Audio_256.UI.Shared.SystemTrayIcon.Models
 {
     internal class SystemTrayIconModel
     {
+        public string TooltipText { get; set; } = "Audio-256 Player";
+        public bool IsVisible { get; set; } = true;
     }
 }

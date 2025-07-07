@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Audio_256.UI.AlbumTracks.Views
+﻿namespace Audio_256.UI.AlbumTracks.Views
 {
     public partial class AlbumTracksListView : UserControl
     {
         public AlbumTracksListView()
         {
             InitializeComponent();
+        }
+        public void AddItem(UserControl item)
+        {
+            flowLayoutPanel.Controls.Add(item);
+        }
+        public void ClearItems()
+        {
+            flowLayoutPanel.Controls.Clear();
         }
     }
 }
